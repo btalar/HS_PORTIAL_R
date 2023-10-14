@@ -1,10 +1,12 @@
+import './index.css';
+
+import { NextUIProvider } from '@nextui-org/react';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { reportWebVitals } from './reportWebVitals';
 import { App } from './views';
-
 /* istanbul ignore next */
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement,
@@ -12,16 +14,18 @@ const root = ReactDOM.createRoot(
 /* istanbul ignore next */
 root.render(
   <React.StrictMode>
-    <Router>
-      <Routes>
-        <Route
-          path="*"
-          element={(
-            <App />
+    <NextUIProvider>
+      <Router>
+        <Routes>
+          <Route
+            path="*"
+            element={(
+              <App />
                )}
-        />
-      </Routes>
-    </Router>
+          />
+        </Routes>
+      </Router>
+    </NextUIProvider>
   </React.StrictMode>,
 );
 

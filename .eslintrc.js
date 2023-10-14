@@ -20,6 +20,7 @@ module.exports = {
     'import/parsers': { '@typescript-eslint/parser': ['.ts', '.tsx'] },
     'import/resolver': { typescript: { project: '.' } },
   },
+  ignorePatterns: ['tailwind.config.js'],
   rules: {
     'no-shadow': 0,
     '@typescript-eslint/no-shadow': 2,
