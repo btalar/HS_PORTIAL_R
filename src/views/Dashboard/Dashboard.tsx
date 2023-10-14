@@ -2,6 +2,6 @@ import React, { FC } from 'react';
 
 export const Dashboard: FC = () => (
   <div>
-    Dashboard
+    Dashboardasdasdasd
   </div>
 );
