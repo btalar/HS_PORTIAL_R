@@ -1,0 +1,102 @@
+module.exports = {
+  extends: [
+    'eslint:recommended',
+    'airbnb',
+    'airbnb/hooks',
+    'plugin:@typescript-eslint/recommended',
+  ],
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'import', 'react-hooks', 'simple-import-sort'],
+  env: {
+    browser: true,
+    jest: true,
+  },
+  globals: {
+    page: true,
+    browser: true,
+    context: true,
+  },
+  settings: {
+    'import/parsers': { '@typescript-eslint/parser': ['.ts', '.tsx'] },
+    'import/resolver': { typescript: { project: '.' } },
+  },
+  rules: {
+    'no-shadow': 0,
+    '@typescript-eslint/no-shadow': 2,
+    '@typescript-eslint/explicit-function-return-type': 1,
+    '@typescript-eslint/prefer-interface': 0,
+    '@typescript-eslint/indent': 0,
+    // note you must disable the base rule as it can report incorrect errors
+    'no-use-before-define': 0,
+    '@typescript-eslint/no-use-before-define': 1,
+    '@typescript-eslint/no-unused-expressions': 2,
+    '@typescript-eslint/no-unused-vars': [
+      2,
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_',
+      },
+    ],
+    '@typescript-eslint/ban-ts-comment': 0,
+    '@typescript-eslint/member-delimiter-style': [
+      2,
+      {
+        multiline: {
+          delimiter: 'semi',
+          requireLast: true,
+        },
+        singleline: {
+          delimiter: 'semi',
+          requireLast: false,
+        },
+      },
+    ],
+    'react-hooks/exhaustive-deps': 1,
+    'react-hooks/rules-of-hooks': 2,
+    'react/destructuring-assignment': 1,
+    'react/jsx-props-no-spreading': 0,
+    'react/state-in-constructor': 0,
+    'react/jsx-key': 2,
+    'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.tsx'] }],
+    'react/require-default-props': 0,
+    'react/jsx-one-expression-per-line': 0,
+    'react/function-component-definition': 0,
+    'react/jsx-uses-react': 0,
+    'react/react-in-jsx-scope': 0,
+    'react/no-unescaped-entities': 0,
+    'import/named': 2,
+    'import/extensions': [
+      2,
+      'ignorePackages',
+      {
+        js: 'never',
+        ts: 'never',
+        jsx: 'never',
+        tsx: 'never',
+      },
+    ],
+    'import/no-extraneous-dependencies': [2, { devDependencies: true }],
+    'import/prefer-default-export': 0,
+    'import/no-default-export': 2,
+    'jsx-a11y/label-has-associated-control': 2,
+    'comma-dangle': [1, 'always-multiline'],
+    'max-len': [2, {
+      code: 120,
+      ignoreComments: true,
+      ignoreTrailingComments: true,
+      ignoreUrls: true,
+    }],
+    'object-curly-newline': [1, { multiline: true }],
+    'max-lines': [2, { max: 200 }],
+    'simple-import-sort/imports': 2,
+    'simple-import-sort/exports': 2,
+  },
+  overrides: [
+    {
+      files: ['*.ts', '*.mts', '*.cts', '*.tsx'],
+      excludedFiles: ['*.test.*'],
+      rules: { '@typescript-eslint/explicit-function-return-type': ['warn', { allowExpressions: true }] },
+    },
+  ],
+};
