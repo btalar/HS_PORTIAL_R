@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 
 export const Dashboard: FC = () => (
   <Input
-    type="emails"
+    type="emailsaaaaaaa"
     label="Email"
     defaultValue="junior@nextui.org"
     className="max-w-xs"
