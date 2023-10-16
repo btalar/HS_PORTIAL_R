@@ -12,5 +12,6 @@ export const Dashboard: FC = () => (
       className="max-w-xs"
     />
     CONFIG FILE_TEST = {apiUrl}
+    <img src="https://img.shields.io/badge/Heroku%20App%20Version-v1.0.0-blue.svg" alt="Heroku App Version" />
   </div>
 );
