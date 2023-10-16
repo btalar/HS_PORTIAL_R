@@ -10,9 +10,8 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.get('/', (req, res) => {
-  const herokuReleaseVersion = process.env.HEROKU_RELEASE_VERSION;
-  res.json({ version: herokuReleaseVersion });
+app.get('/getHerokuReleaseVersion', (req, res) => {
+  res.send(process.env.HEROKU_RELEASE_VERSION || 'Not available');
 });
 
 app.listen(port, () => {
