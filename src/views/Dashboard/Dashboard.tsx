@@ -1,7 +1,7 @@
 import { Input } from '@nextui-org/react';
 import React, { FC } from 'react';
 
-const r = process.env.REACT_APP_HEROKU_RELEASE_VERSION;
+const r = process.env.HEROKU_RELEASE_VERSION;
 console.log(r, 'erer');
 
 const appv = process.env.REACT_APP_FIREBASE_URL;
