@@ -11,7 +11,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.render('index', { HEROKU_RELEASE_VERSION: process.env.HEROKU_RELEASE_VERSION });
+  const herokuReleaseVersion = process.env.HEROKU_RELEASE_VERSION;
+  res.json({ version: herokuReleaseVersion });
 });
 
 app.listen(port, () => {
