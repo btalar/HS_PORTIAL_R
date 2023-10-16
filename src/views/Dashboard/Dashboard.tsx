@@ -1,6 +1,8 @@
 import { Input } from '@nextui-org/react';
 import React, { FC } from 'react';
 
+const apiUrl = process.env.REACT_APP_API_KEY;
+console.log(apiUrl, 'apiUrl');
 export const Dashboard: FC = () => (
   <div>
     <Input
@@ -9,6 +11,6 @@ export const Dashboard: FC = () => (
       defaultValue="junior@nextui.org"
       className="max-w-xs"
     />
-    Run app STAGE
+    Run app = {apiUrl}
   </div>
 );
