@@ -2,13 +2,13 @@ import { Input } from '@nextui-org/react';
 import React, { FC, useEffect, useState } from 'react';
 
 export const Dashboard: FC = () => {
-  const [version, setVersion] = useState('');
+  const [appVersion, setAppVersion] = useState('');
 
   useEffect(() => {
     fetch('/getHerokuReleaseVersion')
-      .then((response) => response.text())
+      .then((response) => response.json())
       .then((data) => {
-        setVersion(data);
+        setAppVersion(data.version);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
@@ -23,7 +23,7 @@ export const Dashboard: FC = () => {
         defaultValue="junior@nextui.org"
         className="max-w-xs"
       />
-      <h1>Heroku Release Version: {version}</h1>
+      <h1>Heroku Release Version: {appVersion}</h1>
     </div>
   );
 };
