@@ -1,19 +1,26 @@
 import { Input } from '@nextui-org/react';
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
-const releaseVersion = process.env.HEROKU_RELEASE_VERSION;
-console.log(`Heroku Release Version: ${releaseVersion}`);
+export const Dashboard: FC = () => {
+  const [version, setVersion] = useState('');
 
-const enviromente = process.env.REACT_APP_FIREBASE_URL;
+  useEffect(() => {
+    fetch('/api/version') // Replace with your server's route
+      .then((response) => response.json())
+      .then((data) => {
+        setVersion(data.version);
+      });
+  }, []);
 
-export const Dashboard: FC = () => (
-  <div>
-    <Input
-      type="emails"
-      label="EMAIL"
-      defaultValue="junior@nextui.org"
-      className="max-w-xs"
-    />
-    CONFIG FILE_TEST {enviromente} | {releaseVersion}
-  </div>
-);
+  return (
+    <div>
+      <Input
+        type="emails"
+        label="EMAIL"
+        defaultValue="junior@nextui.org"
+        className="max-w-xs"
+      />
+      <h1>Heroku Release Version: {version}</h1>
+    </div>
+  );
+};

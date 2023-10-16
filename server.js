@@ -14,6 +14,11 @@ app.get('/', (req, res) => {
   res.render('index', { HEROKU_RELEASE_VERSION: process.env.HEROKU_RELEASE_VERSION });
 });
 
+app.get('/', (req, res) => {
+  const herokuReleaseVersion = process.env.HEROKU_RELEASE_VERSION;
+  res.json({ version: herokuReleaseVersion });
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
