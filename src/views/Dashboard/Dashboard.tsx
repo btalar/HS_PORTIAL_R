@@ -4,7 +4,7 @@ import React, { FC } from 'react';
 export const Dashboard: FC = () => (
   <Input
     type="emails"
-    label="Emailasdsadasdsadasd"
+    label="EMAIL"
     defaultValue="junior@nextui.org"
     className="max-w-xs"
   />
