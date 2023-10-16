@@ -1,7 +1,7 @@
 import { Input } from '@nextui-org/react';
 import React, { FC } from 'react';
 
-const releaseVersion = window?.HEROKU_RELEASE_VERSION;
+const releaseVersion = process.env.HEROKU_RELEASE_VERSION;
 console.log(`Heroku Release Version: ${releaseVersion}`);
 
 const enviromente = process.env.REACT_APP_FIREBASE_URL;
@@ -14,6 +14,6 @@ export const Dashboard: FC = () => (
       defaultValue="junior@nextui.org"
       className="max-w-xs"
     />
-    CONFIG FILE_TEST {enviromente}
+    CONFIG FILE_TEST {enviromente} | {releaseVersion}
   </div>
 );
