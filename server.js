@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.get('/getHerokuReleaseVersion', (req, res) => {
+app.get('https://hotelspot-develop-7cbb71ce24bf.herokuapp.com/getHerokuReleaseVersion', (req, res) => {
   const herokuReleaseVersion = process.env.HEROKU_RELEASE_VERSION;
   res.json({ version: herokuReleaseVersion });
 });

@@ -1,19 +1,30 @@
 import { Input } from '@nextui-org/react';
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
-const r = process.env.HEROKU_RELEASE_VERSION;
-console.log(r, 'erer');
+export const Dashboard: FC = () => {
+  const [version, setVersion] = useState('');
 
-const appv = process.env.REACT_APP_FIREBASE_URL;
-export const Dashboard: FC = () => (
-  <div>
-    <Input
-      type="emails"
-      label="EMAIL"
-      defaultValue="junior@nextui.org"
-      className="max-w-xs"
-    />
-    <h1>Heroku Release Version: </h1>
-    <h2>{appv}</h2>
-  </div>
-);
+  useEffect(() => {
+    fetch('https://hotelspot-develop-7cbb71ce24bf.herokuapp.com//getHerokuReleaseVersion')
+      .then((response) => response.json())
+      .then((data) => {
+        setVersion(data.version);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
+  return (
+    <div>
+      <Input
+        type="emails"
+        label="EMAIL"
+        defaultValue="junior@nextui.org"
+        className="max-w-xs"
+      />
+      <h1>Heroku Release Version: {version}</h1>
+    </div>
+  );
+};
