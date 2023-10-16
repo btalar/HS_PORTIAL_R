@@ -41,8 +41,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "serve -s build",
+    "dev": "react-scripts start",
+    "start": "serve -s build",
+    "build": "react-scripts build",
     "test": "react-scripts test --runInBand --silent --coverage src/ --collectCoverageFrom=!src/api/** --collectCoverageFrom=!src/tests/** --collectCoverageFrom=!src/assets/** --watchAll=false --ci --reporters=default --reporters=jest-junit --coverageReporters=cobertura",
     "test:coverage": "react-scripts test --coverage src/ --collectCoverageFrom=!src/api/** --collectCoverageFrom=!src/tests/** --collectCoverageFrom=!src/assets/**",
     "eject": "react-scripts eject",
