@@ -1,7 +1,7 @@
 import { Input } from '@nextui-org/react';
 import React, { FC } from 'react';
 
-const apiUrl = process.env.REACT_APP_API_KEY;
+const apiUrl = process.env.REACT_APP_FIREBASE_URL;
 console.log(apiUrl, 'apiUrl');
 export const Dashboard: FC = () => (
   <div>
