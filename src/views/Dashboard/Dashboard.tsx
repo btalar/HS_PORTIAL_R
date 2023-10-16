@@ -8,6 +8,7 @@ export const Dashboard: FC = () => {
     fetch('/getHerokuReleaseVersion')
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         setAppVersion(data.version);
       })
       .catch((error) => {
