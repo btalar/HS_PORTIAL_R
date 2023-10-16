@@ -1,35 +1,16 @@
 import { Input } from '@nextui-org/react';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 
-export const Dashboard: FC = () => {
-  const [appVersion, setAppVersion] = useState('');
-
-  useEffect(() => {
-    fetch('/getHerokuReleaseVersion')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        setAppVersion(data.version);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
-
-  return (
-    <div>
-      <Input
-        type="emails"
-        label="EMAIL"
-        defaultValue="junior@nextui.org"
-        className="max-w-xs"
-      />
-      <h1>Heroku Release Version: {appVersion}</h1>
-    </div>
-  );
-};
+const r = process.env.REACT_APP_HEROKU_RELEASE_VERSION;
+console.log(r, 'erer');
+export const Dashboard: FC = () => (
+  <div>
+    <Input
+      type="emails"
+      label="EMAIL"
+      defaultValue="junior@nextui.org"
+      className="max-w-xs"
+    />
+    <h1>Heroku Release Version: </h1>
+  </div>
+);
