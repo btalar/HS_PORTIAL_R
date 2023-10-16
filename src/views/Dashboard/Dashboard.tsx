@@ -11,6 +11,6 @@ export const Dashboard: FC = () => (
       defaultValue="junior@nextui.org"
       className="max-w-xs"
     />
-    CONFIG_TEST = {apiUrl}
+    CONFIG FILE = {apiUrl}
   </div>
 );
