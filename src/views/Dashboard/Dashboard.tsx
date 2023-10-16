@@ -1,10 +1,11 @@
 import { Input } from '@nextui-org/react';
 import React, { FC } from 'react';
 
-const releaseVersion = process.env.HEROKU_RELEASE_VERSION;
+const releaseVersion = window?.HEROKU_RELEASE_VERSION;
 console.log(`Heroku Release Version: ${releaseVersion}`);
 
 const enviromente = process.env.REACT_APP_FIREBASE_URL;
+
 export const Dashboard: FC = () => (
   <div>
     <Input
