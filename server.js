@@ -10,6 +10,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
+app.get('/', (req, res) => {
+  res.render('index', { HEROKU_RELEASE_VERSION: process.env.HEROKU_RELEASE_VERSION });
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
