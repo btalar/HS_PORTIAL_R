@@ -50,7 +50,7 @@
     "lint": "eslint --ext .ts,.tsx --cache src/ --max-warnings 50",
     "lint:fix": "eslint --ext .ts,.tsx --fix src/",
     "prepare": "husky install",
-    "heroku-postbuild": "react-scripts build:prod"
+    "heroku-postbuild": "react-scripts build"
   },
   "proxy": "http://localhost:8000",
   "eslintConfig": {
