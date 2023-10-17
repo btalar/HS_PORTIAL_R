@@ -2,11 +2,9 @@
 //
 // import { Dashboard } from '../Dashboard';
 // import { Login } from '../Login';
-// @ts-ignore
-import metadata from 'heroku-dyno-metadata';
 import { FC } from 'react';
 
-console.log(metadata.dynoName);
+const myVariable = process.env.REACT_APP_MY_VARIABLE;
 export const App: FC = () => (
-  <>sadsd</>
+  <h1>Heroku Release Version: {myVariable} </h1>
 );
