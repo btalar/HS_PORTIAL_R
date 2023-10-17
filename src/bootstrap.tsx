@@ -8,25 +8,24 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { reportWebVitals } from './reportWebVitals';
 import { App } from './views';
 /* istanbul ignore next */
+
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement,
 );
 /* istanbul ignore next */
 root.render(
-  <React.StrictMode>
-    <NextUIProvider>
-      <Router>
-        <Routes>
-          <Route
-            path="*"
-            element={(
-              <App />
+  <NextUIProvider>
+    <Router>
+      <Routes>
+        <Route
+          path="*"
+          element={(
+            <App />
                )}
-          />
-        </Routes>
-      </Router>
-    </NextUIProvider>
-  </React.StrictMode>,
+        />
+      </Routes>
+    </Router>
+  </NextUIProvider>,
 );
 
 // If you want to start measuring performance in your app, pass a function
