@@ -1,9 +1,6 @@
 {
   "name": "hs-portal",
   "version": "0.1.0",
-  "engines": {
-    "node": "16.17.0"
-  },
   "private": true,
   "dependencies": {
     "@nextui-org/button": "^2.0.21",
