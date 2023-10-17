@@ -12,6 +12,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
+app.get('/getHerokuAppId', (req, res) => {
+  res.json({ herokuAppId: process.env.HEROKU_APP_ID });
+});
+
 app.get('/', (req, res) => {
   const herokuReleaseVersion = process.env.HEROKU_RELEASE_VERSION;
   res.json({ version: herokuReleaseVersion });

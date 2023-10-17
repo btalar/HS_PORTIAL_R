@@ -1,7 +1,9 @@
 import { Input } from '@nextui-org/react';
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
 export const Dashboard: FC = () => {
+  const [herokuAppId, setHerokuAppId] = useState(null);
+
   useEffect(() => {
     const apiKey = process.env.HEROKU_RELEASE_VERSION;
     const apiUrl = process.env.HEROKU_APP_ID;
@@ -9,6 +11,19 @@ export const Dashboard: FC = () => {
     console.log(apiKey, 'HEROKU_APP_ID');
     console.log(apiUrl, 'HEROKU_APP_ID');
   }, []);
+
+  useEffect(() => {
+    // Make an API request to fetch HEROKU_APP_ID
+    fetch('/getHerokuAppId')
+      .then((response) => response.json())
+      .then((data) => {
+        setHerokuAppId(data.herokuAppId);
+      });
+  }, []);
+
+  useEffect(() => () => {
+    console.log(herokuAppId);
+  }, [herokuAppId]);
 
   return (
     <div>
