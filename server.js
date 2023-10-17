@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.get('/getHerokuAppId', (req, res) => {
+app.get('https://api.heroku.com/apps/hotelspot-develop', (req, res) => {
   res.json({ herokuAppId: process.env.HEROKU_APP_ID });
 });
 
