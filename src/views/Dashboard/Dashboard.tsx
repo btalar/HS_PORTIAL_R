@@ -8,6 +8,7 @@ export const Dashboard: FC = () => {
   const [dynoInfo, setDynoInfo] = useState<string | null>(null);
 
   useEffect(() => {
+    console.log(dynoMetadata.dyno);
     // Use the `dynoMetadata` object to access Heroku Dyno information
     if (dynoMetadata.dyno) {
       setDynoInfo(JSON.stringify(dynoMetadata.dyno, null, 2));

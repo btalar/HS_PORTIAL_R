@@ -1,12 +1,13 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-import { middleware as herokuDynoMetadata } from 'heroku-dyno-metadata';
-
-const express = require('express');
+import express from 'express';
+import metadata, { middleware as herokuDynoMetadata } from 'heroku-dyno-metadata';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path');
 
 const app = express().use(herokuDynoMetadata());
 const port = process.env.PORT || 3000;
+
+console.log(app);
+console.log(metadata);
 
 app.use(express.static(path.join(__dirname, 'build')));
 
