@@ -1,19 +1,17 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
+import { middleware as herokuDynoMetadata } from 'heroku-dyno-metadata';
+
 const express = require('express');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path');
 
-const app = express();
+const app = express().use(herokuDynoMetadata());
 const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
-app.get('https://api.heroku.com/apps/hotelspot-develop', (req, res) => {
-  res.json({ herokuAppId: process.env.HEROKU_APP_ID });
 });
 
 app.get('/', (req, res) => {

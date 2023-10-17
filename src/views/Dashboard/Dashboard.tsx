@@ -1,10 +1,13 @@
 import { Input } from '@nextui-org/react';
+import metadata from 'heroku-dyno-metadata';
 import React, { FC, useEffect, useState } from 'react';
 
 export const Dashboard: FC = () => {
   const [herokuAppId, setHerokuAppId] = useState(null);
 
   useEffect(() => {
+    console.log(metadata.dynoName);
+
     const apiKey = process.env.HEROKU_RELEASE_VERSION;
     const apiUrl = process.env.HEROKU_APP_ID;
 
