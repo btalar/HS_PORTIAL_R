@@ -1,18 +1,24 @@
 import { Input } from '@nextui-org/react';
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 
-const apiKey = process.env.API_KEY;
+export const Dashboard: FC = () => {
+  useEffect(() => {
+    const apiKey = process.env.HEROKU_RELEASE_VERSION;
+    const apiUrl = process.env.HEROKU_APP_ID;
 
-console.log(apiKey);
+    console.log(apiKey, 'HEROKU_APP_ID');
+    console.log(apiUrl, 'HEROKU_APP_ID');
+  }, []);
 
-export const Dashboard: FC = () => (
-  <div>
-    <Input
-      type="emails"
-      label="EMAIL"
-      defaultValue="junior@nextui.orgs"
-      className="max-w-xs"
-    />
-    <h1>Heroku Release  {apiKey}</h1>
-  </div>
-);
+  return (
+    <div>
+      <Input
+        type="emails"
+        label="EMAIL"
+        defaultValue="junior@nextui.orgs"
+        className="max-w-xs"
+      />
+      <h1>Heroku Release   </h1>
+    </div>
+  );
+};
