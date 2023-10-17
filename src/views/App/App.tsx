@@ -4,9 +4,7 @@
 // import { Login } from '../Login';
 import { FC } from 'react';
 
-// @ts-ignore
-const herokuReleaseVersion = window.HEROKU_RELEASE_VERSION;
-
+const myVariable = process.env.REACT_APP_MY_VARIABLE;
 export const App: FC = () => (
-  <h1>Heroku Release Version: {herokuReleaseVersion}</h1>
+  <h1>Heroku Release Version: {myVariable} </h1>
 );
