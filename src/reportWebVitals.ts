@@ -1,7 +1,6 @@
 import { ReportHandler } from 'web-vitals';
 
-/* istanbul ignore next */
-export const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
+const reportWebVitals = (onPerfEntry?: ReportHandler) => {
   if (onPerfEntry && onPerfEntry instanceof Function) {
     import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
       getCLS(onPerfEntry);
@@ -12,3 +11,6 @@ export const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
     });
   }
 };
+
+// eslint-disable-next-line import/no-default-export
+export default reportWebVitals;
