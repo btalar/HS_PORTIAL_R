@@ -1,20 +1,23 @@
 const express = require('express');
 const path = require('path');
+const dotenv = require('dotenv');
+
+// Load environment variables from .env
+dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
-app.use(express.static(path.join(__dirname, 'build')));
+// Serve the static React build
+app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// Define your API routes or other server routes as needed
+
+// Handle any other routes by serving the React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
-app.get('https://hotelspot-develop-7cbb71ce24bf.herokuapp.com/getHerokuReleaseVersion', (req, res) => {
-  const herokuReleaseVersion = process.env.HEROKU_RELEASE_VERSION;
-  res.json({ version: herokuReleaseVersion });
-});
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

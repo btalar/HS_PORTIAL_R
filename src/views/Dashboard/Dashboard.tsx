@@ -1,6 +1,10 @@
 import { Input } from '@nextui-org/react';
 import React, { FC, useEffect, useState } from 'react';
 
+const apiKey = process.env.API_KEY;
+
+console.log(apiKey);
+
 export const Dashboard: FC = () => {
   const [version, setVersion] = useState('');
 
@@ -24,7 +28,7 @@ export const Dashboard: FC = () => {
         defaultValue="junior@nextui.org"
         className="max-w-xs"
       />
-      <h1>Heroku Release Version: {version}</h1>
+      <h1>Heroku Release Version: {version} {apiKey} </h1>
     </div>
   );
 };

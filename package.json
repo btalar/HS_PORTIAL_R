@@ -19,6 +19,7 @@
     "@types/node": "^16.18.58",
     "@types/react": "^18.2.28",
     "@types/react-dom": "^18.2.13",
+    "dotenv": "^16.3.1",
     "eslint": "^8.51.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-import-resolver-typescript": "^3.6.1",
@@ -39,7 +40,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "serve -s build",
+    "start": "node server.js",
     "develop": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --runInBand --silent --coverage src/ --collectCoverageFrom=!src/api/** --collectCoverageFrom=!src/tests/** --collectCoverageFrom=!src/assets/** --watchAll=false --ci --reporters=default --reporters=jest-junit --coverageReporters=cobertura",
@@ -74,5 +75,4 @@
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.3"
   }
-
 }
