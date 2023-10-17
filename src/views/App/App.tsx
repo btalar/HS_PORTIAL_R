@@ -2,11 +2,10 @@
 //
 // import { Dashboard } from '../Dashboard';
 // import { Login } from '../Login';
-// @ts-ignore
-import metadata from 'heroku-dyno-metadata';
 import { FC } from 'react';
 
-console.log(metadata.dynoName);
+const herokuReleaseVersion = window.HEROKU_RELEASE_VERSION;
+
 export const App: FC = () => (
-  <>sadsd</>
+  <h1>Heroku Release Version: {herokuReleaseVersion}</h1>
 );
