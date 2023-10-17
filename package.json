@@ -48,8 +48,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint --ext .ts,.tsx --cache src/ --max-warnings 50",
     "lint:fix": "eslint --ext .ts,.tsx --fix src/",
-    "prepare": "husky install",
-    "heroku-postbuild": "react-scripts build"
+    "prepare": "husky install"
   },
 
   "eslintConfig": {
