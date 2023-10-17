@@ -2,6 +2,9 @@
   "name": "hs-portal",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "@nextui-org/react": "^2.1.13",
     "@nextui-org/system": "^2.0.10",
