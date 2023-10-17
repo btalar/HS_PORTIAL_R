@@ -23,15 +23,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start ",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --runInBand --silent --coverage src/ --collectCoverageFrom=!src/api/** --collectCoverageFrom=!src/tests/** --collectCoverageFrom=!src/assets/** --watchAll=false --ci --reporters=default --reporters=jest-junit --coverageReporters=cobertura",
     "test:coverage": "react-scripts test --coverage src/ --collectCoverageFrom=!src/api/** --collectCoverageFrom=!src/tests/** --collectCoverageFrom=!src/assets/**",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .ts,.tsx --cache src/ --max-warnings 50",
     "lint:fix": "eslint --ext .ts,.tsx --fix src/",
-    "prepare": "husky install",
-    "postinstall": "tsc"
+    "prepare": "husky install"
   },
 
   "eslintConfig": {
