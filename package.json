@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@nextui-org/react": "^2.1.13",
     "@nextui-org/system": "^2.0.10",
     "@nextui-org/theme": "^2.1.9",
+    "@testing-library/jest-dom": "5.16.4",
+    "@testing-library/react": "13.3.0",
+    "@testing-library/user-event": "13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.58",
     "@types/react": "^18.2.28",
@@ -16,9 +20,6 @@
     "react-aria": "^3.29.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "6.3.0",
-    "@testing-library/jest-dom": "5.16.4",
-    "@testing-library/react": "13.3.0",
-    "@testing-library/user-event": "13.5.0",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
@@ -32,7 +33,6 @@
     "lint:fix": "eslint --ext .ts,.tsx --fix src/",
     "prepare": "husky install"
   },
-
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -53,16 +53,16 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.31",
-    "tailwindcss": "^3.3.3",
-    "husky": "^8.0.3",
-    "lint-staged": "11.2.6",
     "eslint": "^8.51.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
-    "react-scripts": "5.0.1"
+    "husky": "^8.0.3",
+    "lint-staged": "11.2.6",
+    "postcss": "^8.4.31",
+    "react-scripts": "5.0.1",
+    "tailwindcss": "^3.3.3"
   }
 }
