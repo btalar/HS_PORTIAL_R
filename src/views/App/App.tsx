@@ -1,10 +1,12 @@
-// import { Route, Routes } from 'react-router-dom';
-//
-// import { Dashboard } from '../Dashboard';
-// import { Login } from '../Login';
-import { FC } from 'react';
+import React, { FC } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-const myVariable = process.env.REACT_APP_MY_VARIABLE;
+import { Dashboard } from '../Dashboard';
+import { LoginPage } from '../LoginPage';
+
 export const App: FC = () => (
-  <h1>Heroku Release Version: {myVariable} </h1>
+  <Routes>
+    <Route path="/login" element={(<LoginPage />)} />
+    <Route path="/" element={(<Dashboard />)} />
+  </Routes>
 );
