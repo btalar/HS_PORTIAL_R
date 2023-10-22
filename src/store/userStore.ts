@@ -3,18 +3,28 @@ import { devtools, persist } from 'zustand/middleware';
 
 interface UserProps {
     email: string | null;
+    refreshToken: string |null;
 }
 
 interface StoreProps {
     user: UserProps;
-    setUser: (username: string) => void;
+    setUser: (user: any) => void;
 }
 
-const initialState = { email: null };
+const initialState = { email: null, refreshToken: null };
 
 export const userStore = create<StoreProps>()(
   devtools(persist((set) => ({
     user: { ...initialState },
-    setUser: (username) => set(() => ({ user: { email: username } })),
+    setUser: (user) => set(
+      () => ({
+        user:
+          {
+            email: user.email,
+            refreshToken: user.stsTokenManager.refreshToken,
+          },
+      }),
+    ),
+
   }), { name: 'state' })),
 );

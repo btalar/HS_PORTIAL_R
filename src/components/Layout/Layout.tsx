@@ -4,5 +4,5 @@ interface LayoutProps {
     children: ReactNode;
 }
 export const Layout: FC<LayoutProps> = ({ children }) => (
-  <div>IS LAYOUT-----{children}</div>
+  <div className="flex justify-center">{children}</div>
 );

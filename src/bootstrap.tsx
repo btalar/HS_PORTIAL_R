@@ -1,9 +1,11 @@
 import './index.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { NextUIProvider } from '@nextui-org/react';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import reportWebVitals from './reportWebVitals';
 import { App } from './views';
@@ -21,6 +23,7 @@ root.render(
           element={(
             <NextUIProvider>
               <App />
+              <ToastContainer />
             </NextUIProvider>
             )}
         />

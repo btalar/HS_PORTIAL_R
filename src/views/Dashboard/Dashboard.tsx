@@ -1,12 +1,13 @@
-import { Button } from '@nextui-org/react';
 import React, { FC } from 'react';
 
-import { Layout } from '../../components';
+import { Layout, User } from '../../components';
 import { Main } from './Dashboard.styled';
 
 export const Dashboard: FC = () => (
   <Layout>
-    <Button color="primary">Dashboard</Button>
-    <Main />
+    <Main>
+      <h1>DASHBOARD</h1>
+      <User />
+    </Main>
   </Layout>
 );
