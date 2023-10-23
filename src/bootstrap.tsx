@@ -4,7 +4,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { NextUIProvider } from '@nextui-org/react';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import reportWebVitals from './reportWebVitals';
@@ -15,21 +14,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-
-    <Router>
-      <Routes>
-        <Route
-          path="*"
-          element={(
-            <NextUIProvider>
-              <App />
-              <ToastContainer />
-            </NextUIProvider>
-            )}
-        />
-      </Routes>
-    </Router>
-
+    <NextUIProvider>
+      <ToastContainer />
+      <App />
+    </NextUIProvider>
   </React.StrictMode>,
 );
 
