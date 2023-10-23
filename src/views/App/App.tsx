@@ -9,8 +9,8 @@ export const App: FC = () => (
   <Router>
     <Routes>
       <Route path="/login" element={<LoginPage />} />
-      <Route element={<ProtectedRoute />}>
-        <Route path="/" element={<Dashboard />} />
+      <Route path="/" element={<ProtectedRoute />}>
+        <Route index element={<Dashboard />} />
       </Route>
     </Routes>
   </Router>

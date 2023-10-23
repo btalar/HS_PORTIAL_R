@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 import { auth } from '../../config/firebase';
@@ -6,11 +6,15 @@ import { auth } from '../../config/firebase';
 export const ProtectedRoute: React.FC = () => {
   const navigate = useNavigate();
 
-  if (!auth.currentUser) {
-    navigate('/login');
-  }
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (!user) {
+        navigate('/login');
+      }
+    });
 
-  return (
-    <Outlet />
-  );
+    return () => unsubscribe();
+  }, [navigate]);
+
+  return <Outlet />;
 };
