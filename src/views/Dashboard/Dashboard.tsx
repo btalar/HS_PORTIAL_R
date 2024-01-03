@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 
-import { Layout, User } from '../../components';
+import { Layout, Navbar } from '../../components';
 import { Main } from './Dashboard.styled';
 
 export const Dashboard: FC = () => (
   <Layout>
+    <Navbar />
     <Main>
-      <h1>DASHBOARD</h1>
-      <User />
+      Content
     </Main>
   </Layout>
 );
