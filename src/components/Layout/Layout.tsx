@@ -1,14 +1,14 @@
 import React, { FC, ReactNode } from 'react';
 
 import { Sidebar } from '../Sidebar';
-import { Container, LayoutStyled } from './Layout.styled';
+import { LayoutWrapper, PageWrapper } from './Layout.styled';
 
 interface LayoutProps {
     children: ReactNode;
 }
 export const Layout: FC<LayoutProps> = ({ children }) => (
-  <LayoutStyled>
+  <LayoutWrapper>
     <Sidebar />
-    <Container>{children}</Container>
-  </LayoutStyled>
+    <PageWrapper>{children}</PageWrapper>
+  </LayoutWrapper>
 );

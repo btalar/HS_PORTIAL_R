@@ -3,4 +3,5 @@ import { signInWithEmailAndPassword as signIn, UserCredential } from 'firebase/a
 import { auth } from '../config';
 
 // eslint-disable-next-line max-len
+// #TODO avoid eslint-disable-next-line max-len
 export const actionSignIn = (email:string, password:string):Promise<UserCredential> => signIn(auth, email, password);

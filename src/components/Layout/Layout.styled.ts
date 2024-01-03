@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-export const LayoutStyled = styled.div` 
-  min-height: 100vh;
+export const LayoutWrapper = styled.div` 
+  height: 100vh;
   display: flex;
 `;
 
-export const Container = styled.div`
+export const PageWrapper = styled.div`
   flex:1;
 `;

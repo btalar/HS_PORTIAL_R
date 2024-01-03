@@ -1,8 +1,9 @@
 import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, User as UserComponent } from '@nextui-org/react';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 import React, { FC, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { actionSignOut } from '../../action/action.signOut';
 import { auth } from '../../config';
 import { userStore } from '../../store';
 
@@ -24,7 +25,7 @@ export const User: FC = () => {
 
   const userLogout = async () => {
     try {
-      await signOut(auth);
+      await actionSignOut();
       localStorage.removeItem('state');
     } catch (err) {
       console.log(err);

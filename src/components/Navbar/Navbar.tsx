@@ -8,13 +8,13 @@ import React, { FC } from 'react';
 
 import { sidebarStore } from '../../store/sidebarStore';
 import { User } from '../User';
-import { NavbarMenuToggleStyled } from './Navbar.styled';
+import { NavbarMenuToggle } from './Navbar.styled';
 
 export const Navbar:FC = () => {
   const { toggle } = sidebarStore();
   return (
     <NavbarNextUi position="sticky">
-      <NavbarMenuToggleStyled onChange={toggle} />
+      <NavbarMenuToggle onChange={toggle} />
       <NavbarBrand>
         <p className="font-bold text-inherit">Hotelspot Mobile</p>
       </NavbarBrand>

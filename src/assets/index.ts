@@ -1,3 +1,3 @@
-import logo from './logo.svg';
+import signatureSVG from './signature.svg';
 
-export const LOGO = logo;
+export const signature = signatureSVG;
