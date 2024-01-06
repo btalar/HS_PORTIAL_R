@@ -1,12 +1,16 @@
-import { Button } from '@nextui-org/react';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, User as UserComponent } from '@nextui-org/react';
+import { onAuthStateChanged } from 'firebase/auth';
 import React, { FC, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { auth } from '../../config/firebase';
+import { actionSignOut } from '../../action/action.signOut';
+import { auth } from '../../config';
+import { userStore } from '../../store';
 
 export const User: FC = () => {
   const navigate = useNavigate();
+
+  const { email } = userStore((state) => state.user);
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
@@ -17,19 +21,31 @@ export const User: FC = () => {
     return () => {
       listen();
     };
-  }, []);
+  }, [navigate]);
 
-  const userLogout = () => {
-    signOut(auth).then(() => {
+  const userLogout = async () => {
+    try {
+      await actionSignOut();
       localStorage.removeItem('state');
-    }).catch(() => {
-      console.log('some Error');
-    });
+    } catch (err) {
+      console.log(err);
+    }
   };
+
   return (
-    <>
-      <h1>User</h1>
-      <Button color="primary" onClick={userLogout}>Logout</Button>
-    </>
+    <Dropdown>
+      <DropdownTrigger>
+        <UserComponent
+          name={email}
+          avatarProps={{ src: 'https://avatars.githubusercontent.com/u/30373425?v=4' }}
+        />
+      </DropdownTrigger>
+      <DropdownMenu aria-label="Static Actions">
+        <DropdownItem onClick={userLogout} key="delete" className="text-danger" color="danger">
+          logout
+        </DropdownItem>
+      </DropdownMenu>
+    </Dropdown>
+
   );
 };

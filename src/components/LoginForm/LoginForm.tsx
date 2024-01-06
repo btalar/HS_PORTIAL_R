@@ -1,11 +1,10 @@
 import { DevTool } from '@hookform/devtools';
 import { Button, Input } from '@nextui-org/react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { auth } from '../../config/firebase';
+import { actionSignIn } from '../../action';
 import { useToast } from '../../hooks/useToast';
 import { userStore } from '../../store';
 
@@ -25,18 +24,17 @@ export const LoginForm: FC = () => {
   // @ts-ignore
   const from = location?.state?.from?.pathname || '/';
 
-  const onSubmit = (data: LoginFormProps) => {
+  const onSubmit = async ({ email, password }: LoginFormProps) => {
     setIsLoading(true);
-    signInWithEmailAndPassword(auth, data.email, data.password)
-      .then((user) => {
-        setIsLoading(false);
-        navigate(from, { replace: true });
-        setUser(user.user);
-      })
-      .catch(() => {
-        setIsLoading(false);
-        showError('Błąd logowania');
-      });
+    try {
+      const user = await actionSignIn(email, password);
+      setIsLoading(false);
+      navigate(from, { replace: true });
+      setUser(user.user);
+    } catch (error) {
+      showError(String(error));
+    }
+    setIsLoading(false);
   };
 
   return (
