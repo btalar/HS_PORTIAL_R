@@ -24,7 +24,7 @@ export const LoginForm: FC = () => {
   // @ts-ignore
   const from = location?.state?.from?.pathname || '/';
 
-  const onSubmit = async ({ email, password }: LoginFormProps) => {
+  const onSubmit = async ({ email, password }: LoginFormProps):Promise<void> => {
     setIsLoading(true);
     try {
       const user = await actionSignIn(email, password);

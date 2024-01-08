@@ -1,13 +1,17 @@
+import { Card, CardBody } from '@nextui-org/react';
 import React, { FC } from 'react';
 
-import { Layout, Navbar } from '../../components';
-import { Main } from './Dashboard.styled';
+import { Layout } from '../../components';
 
 export const Dashboard: FC = () => (
   <Layout>
-    <Navbar />
-    <Main>
-      Content
-    </Main>
+    {Array.from({ length: 50 }).map((e, index) => (
+      // eslint-disable-next-line react/no-array-index-key
+      <Card key={index}>
+        <CardBody>
+          <p>Make beautiful websites regardless of your design experience.</p>
+        </CardBody>
+      </Card>
+    ))}
   </Layout>
 );

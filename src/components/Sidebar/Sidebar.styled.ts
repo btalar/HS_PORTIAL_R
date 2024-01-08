@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
-export const SidebarStyled = styled.aside<{ isOpen: boolean }>`
+export const Sidebar = styled.aside<{ isOpen: boolean }>`
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
   width: ${(props) => (props.isOpen ? '256px' : '56px')};
   background: lightgrey;
   transition: .3s;

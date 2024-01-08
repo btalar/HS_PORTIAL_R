@@ -1,17 +1,30 @@
-import { Button, Image } from '@nextui-org/react';
+import { Accordion, AccordionItem } from '@nextui-org/react';
 import { FC } from 'react';
 
-import { signature } from '../../assets';
+import { pod, signature } from '../../assets';
 import { sidebarStore } from '../../store/sidebarStore';
-import { SidebarStyled } from './Sidebar.styled';
+import { ButtonIcon } from '../ButtonIcon';
+import { Link } from '../Link';
+import { SidebarElement } from './components/SidebarElement';
+import { Sidebar as SidebarWrapper } from './Sidebar.styled';
 
 export const Sidebar:FC = () => {
   const { isOpen, toggle } = sidebarStore();
   return (
-    <SidebarStyled isOpen={isOpen}>
-      <Button isIconOnly onClick={toggle}>
-        <Image width={20} height={20} src={signature} />
-      </Button>
-    </SidebarStyled>
+    <SidebarWrapper isOpen={isOpen}>
+      <SidebarElement icon={<ButtonIcon onClick={toggle} src={signature} />}>
+        <Link href="/">Hotelspot</Link>
+      </SidebarElement>
+      <SidebarElement icon={<ButtonIcon onClick={toggle} src={pod} />}>
+        <Accordion className="px-0">
+          <AccordionItem hideIndicator key="1" aria-label="Accordion" title="Pod">
+            <Link href="/pod">Dane hotelowe</Link>
+            <Link href="/pod">Udogodnienia</Link>
+            <Link href="/pod">Menu resturacji</Link>
+            <Link href="/pod">Ustawienia</Link>
+          </AccordionItem>
+        </Accordion>
+      </SidebarElement>
+    </SidebarWrapper>
   );
 };

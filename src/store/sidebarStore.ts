@@ -12,10 +12,7 @@ export const sidebarStore = create<SidebarStore>()(
       (set) => ({
         isOpen: false,
         toggle: () => set(
-          (state) => {
-            console.log(state);
-            return ({ isOpen: !state.isOpen });
-          },
+          (state) => ({ isOpen: !state.isOpen }),
         ),
       }),
       { name: 'bear-storage' },
