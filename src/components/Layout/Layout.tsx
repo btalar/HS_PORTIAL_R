@@ -1,8 +1,14 @@
 import React, { FC, ReactNode } from 'react';
 
+import { Sidebar } from '../Sidebar';
+import { LayoutWrapper, PageWrapper } from './Layout.styled';
+
 interface LayoutProps {
     children: ReactNode;
 }
 export const Layout: FC<LayoutProps> = ({ children }) => (
-  <div className="flex justify-center">{children}</div>
+  <LayoutWrapper>
+    <Sidebar />
+    <PageWrapper>{children}</PageWrapper>
+  </LayoutWrapper>
 );
