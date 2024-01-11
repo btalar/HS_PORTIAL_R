@@ -21,9 +21,16 @@ export interface Hotel{
     [HotelKeys.CardOffer]: boolean;
     [HotelKeys.CardTaxi]: boolean;
     [HotelKeys.CardApp]: boolean;
+    [HotelKeys.Cards]:Card[];
+}
+
+export interface Card {
+    title:string;
+    items:{cena:string;title:string;time:string}[];
 }
 
 export enum HotelKeys {
+    Cards = 'cards',
     CardRestaurant='cardRestaurant',
     CardWiFi='cardWifi',
     CardTown='cardTown',

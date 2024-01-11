@@ -27,6 +27,7 @@ export const formInputs:InputType[] = [
 ];
 
 export const defaultValues:Hotel = {
+  cards: [],
   cardApp: false,
   cardHotelEvent: false,
   cardOffer: false,

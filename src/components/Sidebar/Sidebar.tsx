@@ -1,7 +1,7 @@
 import { Accordion, AccordionItem } from '@nextui-org/react';
 import { FC } from 'react';
 
-import { pod, signature } from '../../assets';
+import { admin, pod, signature } from '../../assets';
 import { sidebarStore } from '../../store/sidebarStore';
 import { ButtonIcon } from '../ButtonIcon';
 import { Link } from '../Link';
@@ -24,6 +24,9 @@ export const Sidebar:FC = () => {
             <Link href="/pod">Ustawienia</Link>
           </AccordionItem>
         </Accordion>
+      </SidebarElement>
+      <SidebarElement icon={<ButtonIcon onClick={toggle} src={admin} />}>
+        <Link href="/admin">Admin</Link>
       </SidebarElement>
     </SidebarWrapper>
   );
