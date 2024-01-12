@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Chip, Input, Switch } from '@nextui-org/react';
+import { Chip, Input, Switch } from '@nextui-org/react';
 import { doc, updateDoc } from 'firebase/firestore';
 import React, { FC, useEffect } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
@@ -7,6 +7,7 @@ import { db } from '../../config';
 import { useToast } from '../../hooks';
 import { useHotelStore } from '../../store';
 import { Hotel } from '../../types/hotel';
+import { FormSubmit } from '../FormSubmit';
 import { HotelFormWrapper } from './HotelForm.styled';
 import { defaultValues, formInputs } from './inputs';
 
@@ -34,7 +35,6 @@ export const HotelForm:FC = () => {
   }, [hotel, reset]);
 
   const onSubmit:SubmitHandler<Hotel> = async (value) => {
-    console.log(value);
     try {
       if (hotel?.id) {
         const hotelDoc = doc(db, 'hotel', hotel?.id);
@@ -69,15 +69,7 @@ export const HotelForm:FC = () => {
         />,
         chip: <Chip color="primary" className="mt-8" size="lg">{label}</Chip>,
       }[type]))}
-      <ButtonGroup style={{ opacity: isDirty ? 1 : 0.3 }}>
-        <Button
-          color="warning"
-          disabled={!isDirty}
-          onClick={resetForm}
-        >Cofnij
-        </Button>
-        <Button color="danger" disabled={!isDirty} type="submit">Zapisz</Button>
-      </ButtonGroup>
+      <FormSubmit resetForm={resetForm} isDirty={isDirty} />
     </HotelFormWrapper>
   );
 };

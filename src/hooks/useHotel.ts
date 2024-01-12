@@ -14,7 +14,6 @@ export const useHotel = ():void => {
     const unsubscribe = onSnapshot(HOTEL_INDEX_REF, ({ docs }) => {
       const hotel = { ...docs[FIRST_INDEX].data(), id: docs[FIRST_INDEX].id } as Hotel;
       onUpdateHotel(hotel);
-      console.log(hotel);
     });
     return () => {
       unsubscribe();

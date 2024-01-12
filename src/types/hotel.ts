@@ -26,7 +26,12 @@ export interface Hotel{
 
 export interface Card {
     title:string;
-    items:{cena:string;title:string;time:string}[];
+    items:{
+        image:string;
+        price:string;
+        title:string;
+        time:string;
+    }[];
 }
 
 export enum HotelKeys {
