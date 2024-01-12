@@ -13,6 +13,6 @@ export const Input = styled(InputComponent)`
 
 export const Wrapper = styled.div`
   display: flex;
-  flexDirection: column';
-  gap: 16;
+  flex-direction: column;
+  gap: 16px;
 `;
