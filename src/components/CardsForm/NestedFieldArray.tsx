@@ -1,6 +1,6 @@
 import { Button, Card, CardBody, CardFooter, Image } from '@nextui-org/react';
 import React, { FC } from 'react';
-import { Control, useFieldArray, UseFormRegister } from 'react-hook-form';
+import { Control, Controller, useFieldArray, UseFormRegister } from 'react-hook-form';
 
 import { plus } from '../../assets';
 import { AdminForm } from '../../types/AdminForm';
@@ -36,7 +36,11 @@ export const NestedFieldArray:FC<NestedFieldArrayProps> = ({ nestIndex, control,
               label="Price"
               {...register(`cards.${nestIndex}.items.${k}.price`)}
             />
-            <FormImage />
+            <Controller
+              control={control}
+              render={({ field: { onChange, value } }) => <FormImage onChange={onChange} value={value} />}
+              name={`cards.${nestIndex}.items.${k}.time`}
+            />
           </CardBody>
           <CardFooter>
             <Button fullWidth color="default" type="button" onClick={() => remove(k)}>
