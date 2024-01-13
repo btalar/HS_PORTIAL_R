@@ -1,3 +1,26 @@
+export enum HotelKeys {
+    Cards = 'cards',
+    CardRestaurant='cardRestaurant',
+    CardWiFi='cardWifi',
+    CardTown='cardTown',
+    CardOpinion='cardOpinion',
+    CardHotelEvent='cardHotelEvent',
+    CardOffer='cardOffer',
+    CardTaxi='cardTaxi',
+    CardApp='cardApp',
+    Name = 'name',
+    BuildNumber = 'buildNumber',
+    City = 'city',
+    Street = 'street',
+    NavbarConnectToWifi = 'navbarConnectToWifi',
+    NavbarContactInfo = 'navbarContactInfo',
+    NavbarHotelEvents = 'navbarHotelEvents',
+    NavbarMobileApp = 'navbarMobileApp',
+    NavbarNear = 'navbarNear',
+    NavbarSpecialOffers = 'navbarSpecialOffers',
+    NavbarTaxiOrder = 'navbarTaxiOrder',
+}
+
 export interface Hotel{
     id?:string;
     [HotelKeys.Name]: string;
@@ -24,35 +47,23 @@ export interface Hotel{
     [HotelKeys.Cards]:Card[];
 }
 
-export interface Card {
-    title:string;
-    items:{
-        image:string;
-        price:string;
-        title:string;
-        time:string;
-    }[];
+export enum CardType {
+    Food='Food',
+    Trip='Trip'
 }
 
-export enum HotelKeys {
-    Cards = 'cards',
-    CardRestaurant='cardRestaurant',
-    CardWiFi='cardWifi',
-    CardTown='cardTown',
-    CardOpinion='cardOpinion',
-    CardHotelEvent='cardHotelEvent',
-    CardOffer='cardOffer',
-    CardTaxi='cardTaxi',
-    CardApp='cardApp',
-    Name = 'name',
-    BuildNumber = 'buildNumber',
-    City = 'city',
-    Street = 'street',
-    NavbarConnectToWifi = 'navbarConnectToWifi',
-    NavbarContactInfo = 'navbarContactInfo',
-    NavbarHotelEvents = 'navbarHotelEvents',
-    NavbarMobileApp = 'navbarMobileApp',
-    NavbarNear = 'navbarNear',
-    NavbarSpecialOffers = 'navbarSpecialOffers',
-    NavbarTaxiOrder = 'navbarTaxiOrder',
+export interface Card {
+    type:CardType;
+    title:string;
+    items:{
+        title:string;
+
+        // trip
+        image:string;
+        price:string;
+        time:string;
+
+        // food
+        location:string;
+    }[];
 }
