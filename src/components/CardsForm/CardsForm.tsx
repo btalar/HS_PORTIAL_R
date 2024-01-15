@@ -31,7 +31,6 @@ export const CardsForm:FC = () => {
   const resetForm = ():void => reset(defaultValues);
 
   useEffect(() => {
-    console.log(hotel?.cards);
     if (hotel) {
       reset(hotel);
     }

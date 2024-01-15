@@ -50,13 +50,13 @@ export const HotelForm:FC = () => {
     <HotelFormWrapper onSubmit={handleSubmit(onSubmit)}>
       {formInputs.map(({ label, name, type }) => ({
         string: <Input
-          key={name}
+          key={name || label}
           label={label}
           placeholder="_"
           {...register(name!)}
         />,
         boolean: <Controller
-          key={name}
+          key={name || label}
           name={name!}
           control={control}
           render={({ field: { value, onChange } }) => (
@@ -67,7 +67,7 @@ export const HotelForm:FC = () => {
             </Switch>
           )}
         />,
-        chip: <Chip color="primary" className="mt-8" size="lg">{label}</Chip>,
+        chip: <Chip key={name || label} color="primary" className="mt-8" size="lg">{label}</Chip>,
       }[type]))}
       <FormSubmit resetForm={resetForm} isDirty={isDirty} />
     </HotelFormWrapper>

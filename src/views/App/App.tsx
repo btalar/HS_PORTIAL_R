@@ -6,6 +6,7 @@ import { Admin } from '../Admin';
 import { Dashboard } from '../Dashboard';
 import { LoginPage } from '../LoginPage';
 import { Pod } from '../Pod';
+import { Settings } from '../Settings';
 
 export const App: FC = () => (
   <Router>
@@ -15,6 +16,7 @@ export const App: FC = () => (
         <Route index element={<Dashboard />} />
         <Route path="pod" element={<Pod />} />
         <Route path="admin" element={<Admin />} />
+        <Route path="settings" element={<Settings />} />
       </Route>
     </Routes>
   </Router>

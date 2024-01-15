@@ -21,7 +21,7 @@ export const Sidebar:FC = () => {
             <Link href="/pod">Dane hotelowe</Link>
             <Link href="/pod">Udogodnienia</Link>
             <Link href="/pod">Menu resturacji</Link>
-            <Link href="/pod">Ustawienia</Link>
+            <Link href="/settings">Ustawienia</Link>
           </AccordionItem>
         </Accordion>
       </SidebarElement>

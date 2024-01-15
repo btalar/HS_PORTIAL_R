@@ -19,6 +19,7 @@ export enum HotelKeys {
     NavbarNear = 'navbarNear',
     NavbarSpecialOffers = 'navbarSpecialOffers',
     NavbarTaxiOrder = 'navbarTaxiOrder',
+    Settings='settings'
 }
 
 export interface Hotel{
@@ -45,6 +46,17 @@ export interface Hotel{
     [HotelKeys.CardTaxi]: boolean;
     [HotelKeys.CardApp]: boolean;
     [HotelKeys.Cards]:Card[];
+    [HotelKeys.Settings]: Settings;
+}
+
+export interface Settings{
+    language:Language;
+}
+
+export enum Language{
+    PL='PL',
+    EN='EN',
+    DE='DE',
 }
 
 export enum CardType {

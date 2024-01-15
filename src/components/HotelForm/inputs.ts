@@ -1,4 +1,4 @@
-import { Hotel, HotelKeys } from '../../types/hotel';
+import { Hotel, HotelKeys, Language } from '../../types/hotel';
 
 export interface InputType {name?:HotelKeys;label:string;type:'string'|'boolean'|'chip'}
 export const formInputs:InputType[] = [
@@ -27,6 +27,7 @@ export const formInputs:InputType[] = [
 ];
 
 export const defaultValues:Hotel = {
+  settings: { language: Language.EN },
   cards: [],
   cardApp: false,
   cardHotelEvent: false,
