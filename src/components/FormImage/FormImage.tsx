@@ -5,22 +5,20 @@ import ImageUploading, { ImageListType } from 'react-images-uploading';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { v4 as uuidv4 } from 'uuid';
 
+import { useToast } from '../../hooks';
 import { FormImageWrapper } from './FormImage.styled';
 
 interface FormImageProps {
-  onChange:(...event: any[]) => void;
+  onChange:(...event: string[]) => void;
   value:string;
 }
 export const FormImage:FC<FormImageProps> = ({ onChange: onChangeForm, value }) => {
+  const { showError } = useToast();
   const storage = getStorage();
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [images, setImages] = useState([]);
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [images] = useState([]);
   const uploadFile = (file:File):void => {
     if (!file) {
-      console.log('Please select an image');
       return;
     }
 
@@ -31,26 +29,24 @@ export const FormImage:FC<FormImageProps> = ({ onChange: onChangeForm, value }) 
         getDownloadURL(snapshot.ref)
           .then((url) => {
             onChangeForm(url);
-            console.log(value);
           })
           .catch((error) => {
-            console.log(error.message);
+            showError(error.message);
           });
       })
       .catch((error) => {
-        console.log(error.message);
+        showError(error.message);
       });
   };
 
   const maxNumber = 69;
 
-  const onChange = async (imageList:ImageListType) => {
+  const onChange = async (imageList:ImageListType):Promise<void> => {
     try {
       const firstImage = imageList[0];
-      console.log(firstImage.file);
       uploadFile(firstImage.file!);
     } catch (err) {
-      console.log(err);
+      showError(JSON.stringify(err));
     }
   };
 

@@ -1,10 +1,8 @@
 import { Chip, Input, Switch } from '@nextui-org/react';
-import { doc, updateDoc } from 'firebase/firestore';
 import React, { FC, useEffect } from 'react';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 
-import { db } from '../../config';
-import { useToast } from '../../hooks';
+import { useHotelUpdate } from '../../hooks';
 import { useHotelStore } from '../../store';
 import { Hotel } from '../../types/hotel';
 import { FormSubmit } from '../FormSubmit';
@@ -12,7 +10,6 @@ import { HotelFormWrapper } from './HotelForm.styled';
 import { defaultValues, formInputs } from './inputs';
 
 export const HotelForm:FC = () => {
-  const { showError, showSuccess } = useToast();
   const { hotel } = useHotelStore();
 
   const {
@@ -34,17 +31,7 @@ export const HotelForm:FC = () => {
     }
   }, [hotel, reset]);
 
-  const onSubmit:SubmitHandler<Hotel> = async (value) => {
-    try {
-      if (hotel?.id) {
-        const hotelDoc = doc(db, 'hotel', hotel?.id);
-        await updateDoc(hotelDoc, { ...value });
-        showSuccess('Succesffully updated');
-      }
-    } catch (e) {
-      showError('Ups something went wrong');
-    }
-  };
+  const { onSubmit } = useHotelUpdate<Hotel>();
 
   return (
     <HotelFormWrapper onSubmit={handleSubmit(onSubmit)}>
