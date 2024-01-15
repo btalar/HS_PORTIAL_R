@@ -64,18 +64,22 @@ export enum CardType {
     Trip='Trip'
 }
 
+export interface ItemCard {
+    title:string;
+
+    // trip
+    image:string;
+    price:string;
+    time:string;
+    images:string[];
+    description:string;
+
+    // food
+    location:string;
+}
+
 export interface Card {
     type:CardType;
     title:string;
-    items:{
-        title:string;
-
-        // trip
-        image:string;
-        price:string;
-        time:string;
-
-        // food
-        location:string;
-    }[];
+    items:ItemCard[];
 }

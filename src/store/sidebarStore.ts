@@ -4,6 +4,8 @@ import { devtools, persist } from 'zustand/middleware';
 interface SidebarStore {
     isOpen:boolean;
     toggle:() => void;
+    open:() => void;
+    hide:() => void;
 }
 
 export const sidebarStore = create<SidebarStore>()(
@@ -11,11 +13,17 @@ export const sidebarStore = create<SidebarStore>()(
     persist(
       (set) => ({
         isOpen: false,
+        hide: () => set(
+          () => ({ isOpen: false }),
+        ),
+        open: () => set(
+          () => ({ isOpen: true }),
+        ),
         toggle: () => set(
           (state) => ({ isOpen: !state.isOpen }),
         ),
       }),
-      { name: 'bear-storage' },
+      { name: 'sidebar' },
     ),
   ),
 );

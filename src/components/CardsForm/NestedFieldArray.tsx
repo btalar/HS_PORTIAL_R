@@ -1,13 +1,22 @@
-import { Button, Card, CardBody, CardFooter, Image } from '@nextui-org/react';
+import { Button, ButtonGroup, CardFooter, Image } from '@nextui-org/react';
 import React, { FC } from 'react';
 import { Control, Controller, useFieldArray, UseFormGetValues, UseFormRegister } from 'react-hook-form';
 
 import { plus } from '../../assets';
+import { useRightSidebar } from '../../store/useRightSidebar';
 import { AdminForm } from '../../types/AdminForm';
-import { FormImage } from '../FormImage';
-import { Input } from './CardsForm.styled';
+import { ItemCard } from '../../types/hotel';
+import { Card, CardBody, Input } from './CardsForm.styled';
 
-const emptyCard = { title: '', time: '', price: '', image: '', location: '' };
+const emptyCard: ItemCard = {
+  description: '',
+  title: '',
+  time: '',
+  price: '',
+  image: '',
+  location: '',
+  images: [],
+};
 
 interface NestedFieldArrayProps {
   nestIndex:number;
@@ -20,8 +29,9 @@ export const NestedFieldArray:FC<NestedFieldArrayProps> = ({
   nestIndex,
   control,
   register,
-  getValues,
 }) => {
+  const { setId, id } = useRightSidebar();
+
   const { fields, remove, append } = useFieldArray({
     control,
     name: `cards.${nestIndex}.items`,
@@ -29,63 +39,39 @@ export const NestedFieldArray:FC<NestedFieldArrayProps> = ({
 
   return (
     <>
-      {fields.map((item, k) => {
-        const titleInput = (
-          <Input
-            placeholder="Title"
-            label="Title"
-            {...register(`cards.${nestIndex}.items.${k}.title`)}
-          />
-        );
-
-        const timeInput = (
-          <Input
-            placeholder="Time"
-            label="Time"
-            {...register(`cards.${nestIndex}.items.${k}.time`)}
-          />
-        );
-
-        const priceInput = (
-          <Input
-            placeholder="Price"
-            label="Price"
-            {...register(`cards.${nestIndex}.items.${k}.price`)}
-          />
-        );
-
-        const locationInput = (
-          <Input
-            placeholder="Location"
-            label="Location"
-            {...register(`cards.${nestIndex}.items.${k}.location`)}
-          />
-        );
-
-        const imageInput = (
-          <Controller
-            control={control}
-            render={({ field: { onChange, value } }) => <FormImage onChange={onChange} value={value} />}
-            name={`cards.${nestIndex}.items.${k}.image`}
-          />
-        );
-
-        return (
-          <Card key={item.id}>
-            <CardBody>
-              {{
-                Trip: <>{titleInput}{timeInput}{priceInput}{imageInput}</>,
-                Food: <>{titleInput}{imageInput}{locationInput}</>,
-              }[getValues(`cards.${nestIndex}.type`)]}
-            </CardBody>
-            <CardFooter>
-              <Button fullWidth color="default" type="button" onClick={() => remove(k)}>
-                Delete Card
+      {fields.map((item, k) => (
+        <Card isActive={`cards.${nestIndex}.items.${k}` === id} key={item.id}>
+          <CardBody>
+            <Input
+              disabled
+              placeholder="Title"
+              label="Title"
+              {...register(`cards.${nestIndex}.items.${k}.title`)}
+            />
+            <Controller
+              control={control}
+              render={({ field: { value } }) => <Image src={value} />}
+              name={`cards.${nestIndex}.items.${k}.image`}
+            />
+          </CardBody>
+          <CardFooter>
+            <ButtonGroup fullWidth>
+              <Button
+                color="warning"
+                type="button"
+                onClick={() => {
+                  setId(`cards.${nestIndex}.items.${k}`);
+                }}
+              >
+                Edit
               </Button>
-            </CardFooter>
-          </Card>
-        );
-      })}
+              <Button color="danger" type="button" onClick={() => remove(k)}>
+                Delete
+              </Button>
+            </ButtonGroup>
+          </CardFooter>
+        </Card>
+      ))}
       <Card className="min-h-[300px]">
         <Button
           isIconOnly

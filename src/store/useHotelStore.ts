@@ -15,7 +15,7 @@ export const useHotelStore = create<SidebarStore>()(
         hotel: null,
         onUpdateHotel: (updatedHotel) => set(() => ({ hotel: updatedHotel })),
       }),
-      { name: 'bear-storage' },
+      { name: 'hotel' },
     ),
   ),
 );

@@ -2,6 +2,7 @@ import React, { FC, ReactNode } from 'react';
 
 import { Main } from '../../views/Dashboard/Dashboard.styled';
 import { Navbar } from '../Navbar';
+import { RightSidebar } from '../RightSidebar';
 import { Sidebar } from '../Sidebar';
 import { LayoutWrapper, PageWrapper } from './Layout.styled';
 
@@ -14,7 +15,8 @@ export const Layout: FC<LayoutProps> = ({ children, title }) => (
     <Sidebar />
     <PageWrapper>
       <Navbar title={title} />
-      <Main>{children}</Main>
+      <Main hideScrollBar>{children}</Main>
     </PageWrapper>
+    <RightSidebar />
   </LayoutWrapper>
 );
