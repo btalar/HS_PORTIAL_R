@@ -13,7 +13,7 @@ import { FormSubmit } from '../FormSubmit';
 import { InputType } from '../HotelForm/inputs';
 import { FormWrapper, ScrollWrapper, Sidebar } from './RightSidebar.styled';
 
-const commonInputs: InputType[] = [
+export const commonInputs: InputType[] = [
   { name: 'title', type: 'string', label: 'Title' },
   { name: 'subtitle', type: 'string', label: 'Subtitle' },
   { name: 'description', type: 'string', label: 'Description' },
@@ -24,11 +24,12 @@ const commonInputs: InputType[] = [
   { name: 'image4', type: 'image', label: 'image4' },
 ];
 
+console.log(commonInputs);
+
 const trip: InputType[] = [
   { name: 'location', type: 'string', label: 'Location' },
   { name: 'price', type: 'string', label: 'Price' },
   { name: 'time', type: 'string', label: 'Time' },
-  { name: 'image', type: 'image', label: 'Image' },
 
 ];
 
@@ -89,12 +90,12 @@ export const RightSidebar:FC = () => {
       })}
       >
         <ScrollWrapper hideScrollBar offset={0}>
-          {[...{
-            Trip: trip,
-            Food: food,
-            Kids: kids,
-            Google: others,
-          }[cardDetails?.type as CardType], ...commonInputs].map((props) => (
+          {{
+            Food: [...food, ...commonInputs],
+            Trip: [...trip, ...commonInputs],
+            Kids: [...kids, ...commonInputs],
+            Google: [...others, ...commonInputs],
+          }[cardDetails?.type as CardType]?.map((props) => (
             <FormInput
               control={control}
               register={register}

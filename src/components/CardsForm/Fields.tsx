@@ -59,7 +59,6 @@ export const Fields:FC<FieldArrayProps> = ({
                 )}
                 name={`cards.${index}.type`}
               />
-
               <Button size="sm" color="danger" type="button" onClick={() => remove(index)}>
                 Delete
               </Button>

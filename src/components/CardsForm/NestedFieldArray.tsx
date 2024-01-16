@@ -1,12 +1,12 @@
-import { Button, ButtonGroup, CardFooter, Image } from '@nextui-org/react';
+import { Button, Image } from '@nextui-org/react';
 import React, { FC } from 'react';
-import { Control, Controller, useFieldArray, UseFormGetValues, UseFormRegister } from 'react-hook-form';
+import { Control, useFieldArray, UseFormRegister } from 'react-hook-form';
 
 import { plus } from '../../assets';
-import { useRightSidebar } from '../../store/useRightSidebar';
 import { AdminForm } from '../../types/AdminForm';
 import { ItemCard } from '../../types/hotel';
-import { Card, CardBody, Input } from './CardsForm.styled';
+import { CardPreview } from '../CardPreview';
+import { Card } from './CardsForm.styled';
 
 const emptyCard: ItemCard = {
   subtitle: '',
@@ -28,7 +28,6 @@ interface NestedFieldArrayProps {
   nestIndex:number;
   control:Control<AdminForm>;
   register:UseFormRegister<AdminForm>;
-  getValues: UseFormGetValues<AdminForm>;
 }
 
 export const NestedFieldArray:FC<NestedFieldArrayProps> = ({
@@ -36,8 +35,6 @@ export const NestedFieldArray:FC<NestedFieldArrayProps> = ({
   control,
   register,
 }) => {
-  const { setId, id } = useRightSidebar();
-
   const { fields, remove, append } = useFieldArray({
     control,
     name: `cards.${nestIndex}.items`,
@@ -45,38 +42,8 @@ export const NestedFieldArray:FC<NestedFieldArrayProps> = ({
 
   return (
     <>
-      {fields.map((item, k) => (
-        <Card isActive={`cards.${nestIndex}.items.${k}` === id} key={item.id}>
-          <CardBody>
-            <Input
-              disabled
-              placeholder="Title"
-              label="Title"
-              {...register(`cards.${nestIndex}.items.${k}.title`)}
-            />
-            <Controller
-              control={control}
-              render={({ field: { value } }) => <Image src={value} />}
-              name={`cards.${nestIndex}.items.${k}.image`}
-            />
-          </CardBody>
-          <CardFooter>
-            <ButtonGroup fullWidth>
-              <Button
-                color="warning"
-                type="button"
-                onClick={() => {
-                  setId(`cards.${nestIndex}.items.${k}`);
-                }}
-              >
-                Edit
-              </Button>
-              <Button color="danger" type="button" onClick={() => remove(k)}>
-                Delete
-              </Button>
-            </ButtonGroup>
-          </CardFooter>
-        </Card>
+      {fields.map(({ id }, index) => (
+        <CardPreview key={id} {...{ nestIndex, index, control, register, remove }} />
       ))}
       <Card className="min-h-[300px]">
         <Button

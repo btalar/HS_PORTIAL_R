@@ -53,6 +53,6 @@ export const FormInput:FC<FormInput> = ({ type, name, label, register, control, 
         )) : <div>You have to pass options</div>}
       </Select>
     )}
-    name="settings.language"
+    name={name!}
   />,
 }[type]);

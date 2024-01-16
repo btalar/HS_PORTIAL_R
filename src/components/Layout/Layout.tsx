@@ -17,6 +17,6 @@ export const Layout: FC<LayoutProps> = ({ children, title }) => (
       <Navbar title={title} />
       <Main hideScrollBar>{children}</Main>
     </PageWrapper>
-    <RightSidebar />
+    {true && <RightSidebar />}
   </LayoutWrapper>
 );
