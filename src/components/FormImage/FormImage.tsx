@@ -11,8 +11,9 @@ import { FormImageWrapper } from './FormImage.styled';
 interface FormImageProps {
   onChange:(...event: string[]) => void;
   value:string;
+  label:string;
 }
-export const FormImage:FC<FormImageProps> = ({ onChange: onChangeForm, value }) => {
+export const FormImage:FC<FormImageProps> = ({ onChange: onChangeForm, value, label }) => {
   const { showError } = useToast();
   const storage = getStorage();
 
@@ -63,6 +64,7 @@ export const FormImage:FC<FormImageProps> = ({ onChange: onChangeForm, value }) 
         dragProps,
       }) => (
         <FormImageWrapper>
+          <h3>{label}</h3>
           <Button
             color={isDragging ? 'warning' : 'default'}
             fullWidth
@@ -70,11 +72,11 @@ export const FormImage:FC<FormImageProps> = ({ onChange: onChangeForm, value }) 
             onClick={onImageUpload}
             {...dragProps}
           >
-            Click or Drop here image
+            {` ${value.length ? '(Edit)' : ''}Click or Drop here image`}
           </Button>
           {value.length ? (
             <>
-              <Image height={200} width="100%" src={value} />
+              <Image height={200} width={200} src={value} />
               <Button onClick={() => onChangeForm('')} color="danger">Remove</Button>
             </>
           ) : null }

@@ -9,13 +9,19 @@ import { ItemCard } from '../../types/hotel';
 import { Card, CardBody, Input } from './CardsForm.styled';
 
 const emptyCard: ItemCard = {
+  subtitle: '',
   description: '',
+  googleType: '',
+  avatarImage: '',
+  image2: '',
+  image4: '',
+  image1: '',
+  image3: '',
   title: '',
   time: '',
   price: '',
   image: '',
   location: '',
-  images: [],
 };
 
 interface NestedFieldArrayProps {

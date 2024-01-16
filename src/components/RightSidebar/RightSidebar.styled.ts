@@ -13,15 +13,15 @@ export const Sidebar = styled.aside<{ isOpen: boolean }>`
   overflow: hidden;
   flex-direction: column;
   width: ${(props) => (props.isOpen ? '512px' : '0')};
-  background: lightgrey;
+  background: #efefef;
   transition: .3s;
-  @media (max-width: 768px){
+  @media (max-width: 768px) {
     position: fixed;
     width: 256px;
-    top:56px;
-    bottom:0;
+    top: 56px;
+    bottom: 0;
     z-index: 999;
-    transform: translateX( ${(props) => (props.isOpen ? '-100%' : '0')});
+    transform: translateX(${(props) => (props.isOpen ? '-100%' : '0')});
   }
 `;
 

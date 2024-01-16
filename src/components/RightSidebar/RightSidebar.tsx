@@ -13,13 +13,36 @@ import { FormSubmit } from '../FormSubmit';
 import { InputType } from '../HotelForm/inputs';
 import { FormWrapper, ScrollWrapper, Sidebar } from './RightSidebar.styled';
 
-const trip: InputType[] = [
+const commonInputs: InputType[] = [
   { name: 'title', type: 'string', label: 'Title' },
+  { name: 'subtitle', type: 'string', label: 'Subtitle' },
+  { name: 'description', type: 'string', label: 'Description' },
+  { name: 'image', type: 'image', label: 'image' },
+  { name: 'image1', type: 'image', label: 'image1' },
+  { name: 'image2', type: 'image', label: 'image2' },
+  { name: 'image3', type: 'image', label: 'image3' },
+  { name: 'image4', type: 'image', label: 'image4' },
+];
+
+const trip: InputType[] = [
   { name: 'location', type: 'string', label: 'Location' },
   { name: 'price', type: 'string', label: 'Price' },
   { name: 'time', type: 'string', label: 'Time' },
-  { name: 'description', type: 'string', label: 'Description' },
   { name: 'image', type: 'image', label: 'Image' },
+
+];
+
+const food:InputType[] = [
+  { name: 'avatarImage', type: 'image', label: 'Avatar image' },
+
+];
+
+const kids:InputType[] = [
+  { name: 'avatarImage', type: 'image', label: 'Avatar image' },
+];
+
+const others :InputType[] = [
+  { name: 'googleType', type: 'string', label: 'Google Type' },
 ];
 
 export const RightSidebar:FC = () => {
@@ -66,10 +89,12 @@ export const RightSidebar:FC = () => {
       })}
       >
         <ScrollWrapper hideScrollBar offset={0}>
-          {{
+          {[...{
             Trip: trip,
-            Food: trip,
-          }[cardDetails?.type as CardType]?.map((props) => (
+            Food: food,
+            Kids: kids,
+            Google: others,
+          }[cardDetails?.type as CardType], ...commonInputs].map((props) => (
             <FormInput
               control={control}
               register={register}

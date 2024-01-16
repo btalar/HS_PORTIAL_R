@@ -61,21 +61,29 @@ export enum Language{
 
 export enum CardType {
     Food='Food',
-    Trip='Trip'
+    Trip='Trip',
+    Kids='Kids',
+    Google='Google'
 }
 
 export interface ItemCard {
     title:string;
-
+    subtitle:string;
     // trip
     image:string;
     price:string;
     time:string;
-    images:string[];
+    image1:string;
+    image2:string;
+    image3:string;
+    image4:string;
     description:string;
 
     // food
     location:string;
+    avatarImage:string;
+
+    googleType:string;
 }
 
 export interface Card {
