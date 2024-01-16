@@ -1,14 +1,14 @@
 import { FC } from 'react';
 
 import { Layout } from '../../components';
-import { SettingsForm } from '../../components/SettingsForm/SettingsForm';
+import { SettingsForm } from '../../components/SettingsForm';
 import { useHotel } from '../../hooks';
 
 export const Settings:FC = () => {
   useHotel();
 
   return (
-    <Layout title="Dane hotelowe">
+    <Layout title="Ustawienia hotelowe">
       <SettingsForm />
     </Layout>
   );

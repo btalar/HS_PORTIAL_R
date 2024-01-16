@@ -1,6 +1,12 @@
-import { Hotel, HotelKeys, Language } from '../../types/hotel';
+import { Hotel, HotelKeys, ItemCard, Language } from '../../types/hotel';
 
-export interface InputType {name?:HotelKeys;label:string;type:'string'|'boolean'|'chip'}
+export interface InputType {
+      name?:HotelKeys |
+      keyof ItemCard|'settings.language';
+      label:string ;
+      type:'string'|'boolean'|'chip'|'image'|'select';
+      options?:string[];
+}
 export const formInputs:InputType[] = [
   { type: 'chip', label: 'Dane administracyjne' },
   { name: HotelKeys.Name, label: 'Nazwa hotelu', type: 'string' },

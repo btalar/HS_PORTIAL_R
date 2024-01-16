@@ -1,6 +1,6 @@
-import { Button, Input } from '@nextui-org/react';
+import { Button } from '@nextui-org/react';
 import { FC, useEffect, useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import { CardDetails, getCurrentCard } from '../../helpers/getCurrentCard.helper';
 import { useHotel, useHotelUpdate } from '../../hooks';
@@ -8,22 +8,18 @@ import { sidebarStore, useHotelStore } from '../../store';
 import { useRightSidebar } from '../../store/useRightSidebar';
 import { AdminForm } from '../../types/AdminForm';
 import { CardType, HotelKeys, ItemCard } from '../../types/hotel';
-import { FormImage } from '../FormImage';
+import { FormInput } from '../FormInput';
 import { FormSubmit } from '../FormSubmit';
+import { InputType } from '../HotelForm/inputs';
 import { FormWrapper, ScrollWrapper, Sidebar } from './RightSidebar.styled';
 
-interface LocalCard {
-  name: keyof ItemCard;
-  type:'string'|'image'|'imageArray';
-}
-
-const trip: LocalCard[] = [
-  { name: 'title', type: 'string' },
-  { name: 'location', type: 'string' },
-  { name: 'price', type: 'string' },
-  { name: 'time', type: 'string' },
-  { name: 'description', type: 'string' },
-  { name: 'image', type: 'image' },
+const trip: InputType[] = [
+  { name: 'title', type: 'string', label: 'Title' },
+  { name: 'location', type: 'string', label: 'Location' },
+  { name: 'price', type: 'string', label: 'Price' },
+  { name: 'time', type: 'string', label: 'Time' },
+  { name: 'description', type: 'string', label: 'Description' },
+  { name: 'image', type: 'image', label: 'Image' },
 ];
 
 export const RightSidebar:FC = () => {
@@ -55,7 +51,7 @@ export const RightSidebar:FC = () => {
     }
   }, [hide, hotel, id, reset]);
 
-  const resetForm = ():void => reset(getCurrentCard(hotel!, id!)?.card);
+  const resetForm = ():void => reset(hotel && id ? getCurrentCard(hotel, id)?.card : {});
 
   const { onSubmit } = useHotelUpdate<AdminForm>();
 
@@ -73,15 +69,14 @@ export const RightSidebar:FC = () => {
           {{
             Trip: trip,
             Food: trip,
-          }[cardDetails?.type as CardType]?.map(({ name, type }) => ({
-            string: <Input placeholder={name} label={name} key={name} {...register(name)} />,
-            image: <Controller
+          }[cardDetails?.type as CardType]?.map((props) => (
+            <FormInput
               control={control}
-              render={({ field: { onChange, value } }) => <FormImage onChange={onChange} value={String(value)} />}
-              name={name}
-            />,
-            imageArray: <Input key={name} {...register(name)} />,
-          }[type]))}
+              register={register}
+              {...props}
+              key={JSON.stringify(props)}
+            />
+          ))}
         </ScrollWrapper>
         <FormSubmit isDirty={isDirty} resetForm={resetForm}>
           <Button onClick={clearId}>Zamknij</Button>
