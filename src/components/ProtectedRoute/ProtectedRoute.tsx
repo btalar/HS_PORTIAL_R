@@ -2,7 +2,7 @@ import { Spinner } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 
-import { auth } from '../../config/firebase';
+import { auth } from '../../config';
 import { LoaderWrapper } from './ProtectedRoute.styled';
 
 export const ProtectedRoute: React.FC = () => {

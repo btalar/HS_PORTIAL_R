@@ -15,7 +15,7 @@ export const User: FC = () => {
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (!user) {
-        navigate('./login');
+        navigate('/login');
       }
     });
     return () => {
@@ -23,7 +23,7 @@ export const User: FC = () => {
     };
   }, [navigate]);
 
-  const userLogout = async () => {
+  const userLogout = async ():Promise<void> => {
     try {
       await actionSignOut();
       localStorage.removeItem('state');
