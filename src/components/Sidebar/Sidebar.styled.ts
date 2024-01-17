@@ -5,7 +5,7 @@ export const Sidebar = styled.aside<{ isOpen: boolean }>`
   overflow: hidden;
   flex-direction: column;
   border-radius: 0 15px 15px 0;
-  width: ${(props) => (props.isOpen ? '256px' : '56px')};
+  width: ${(props) => (props.isOpen ? '300' : '56px')};
   background: white;
   transition: .3s;
   padding: 0 1rem;

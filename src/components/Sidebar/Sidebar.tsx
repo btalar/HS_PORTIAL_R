@@ -37,6 +37,22 @@ export const Sidebar:FC = () => {
         <SidebarElement name="/admin" icon={<ButtonIcon onClick={toggle} src={admin} />}>
           <Link href="/admin">Admin</Link>
         </SidebarElement>
+        <SidebarElement icon={<ButtonIcon onClick={toggle} src={pod} />}>
+          <Accordion className="px-0">
+            <AccordionItem
+              title={<p className="font-14-400">Zarządzanie konferencjami</p>}
+            >
+              <LinkList>
+                <Link href="/events">Wydarzenia</Link>
+                <Link href="/amenities">Klienci</Link>
+                <Link href="/menu">Sale</Link>
+                <Link href="/settings">Warianty menu</Link>
+                <Link href="/settings">Opiekunowie</Link>
+              </LinkList>
+            </AccordionItem>
+          </Accordion>
+        </SidebarElement>
+
       </SidebarInside>
     </SidebarWrapper>
   );
