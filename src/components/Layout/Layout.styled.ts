@@ -7,4 +7,9 @@ export const LayoutWrapper = styled.div`
 
 export const PageWrapper = styled.div`
   flex:1;
+  padding: 2rem;
+  background: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 `;

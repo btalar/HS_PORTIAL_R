@@ -36,7 +36,6 @@ export const CardsForm:FC = () => {
 
   return (
     <CardsFormWrapper onSubmit={handleSubmit(onSubmit)}>
-      <h1>Cards</h1>
       <Fields
         {...{ control, register, defaultValues, getValues, setValue }}
       />

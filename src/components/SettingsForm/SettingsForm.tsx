@@ -7,6 +7,7 @@ import { HotelKeys, Language } from '../../types/hotel';
 import { FormInput } from '../FormInput';
 import { FormSubmit } from '../FormSubmit';
 import { InputType } from '../HotelForm/inputs';
+import { SettingsFormWrapper } from './SettingsForm.styled';
 import { SettingsFormType } from './SettingsFormType';
 
 export const SettingsForm:FC = () => {
@@ -36,7 +37,7 @@ export const SettingsForm:FC = () => {
 
   const { onSubmit } = useHotelUpdate<SettingsFormType>();
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <SettingsFormWrapper onSubmit={handleSubmit(onSubmit)}>
       {inputs.map((props) => (
         <FormInput
           key={JSON.stringify(props)}
@@ -47,6 +48,6 @@ export const SettingsForm:FC = () => {
       ))}
 
       <FormSubmit isDirty={isDirty} resetForm={resetForm} />
-    </form>
+    </SettingsFormWrapper>
   );
 };

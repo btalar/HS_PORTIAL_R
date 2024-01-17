@@ -1,14 +1,13 @@
 import {
-  Navbar as NavbarNextUi,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
 } from '@nextui-org/react';
 import React, { FC } from 'react';
 
-import { sidebarStore } from '../../store/sidebarStore';
+import { sidebarStore } from '../../store';
 import { User } from '../User';
-import { NavbarMenuToggle } from './Navbar.styled';
+import { NavbarMenuToggle, NavbarNextUi } from './Navbar.styled';
 
 interface NavbarProps{
     title?:string;
@@ -20,7 +19,7 @@ export const Navbar:FC<NavbarProps> = ({ title = 'Hotelspot' }) => {
     <NavbarNextUi maxWidth="full" position="sticky">
       <NavbarMenuToggle onChange={toggle} />
       <NavbarBrand>
-        <p className="font-bold text-inherit">{title}</p>
+        <p className="font-24-300">{title}</p>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
