@@ -1,29 +1,31 @@
 import { Accordion, AccordionItem, Divider } from '@nextui-org/react';
+import FeatherIcon from 'feather-icons-react';
 import { FC } from 'react';
 
-import { admin, pod, signature } from '../../assets';
 import { sidebarStore } from '../../store/sidebarStore';
-import { ButtonIcon } from '../ButtonIcon';
 import { Link } from '../Link';
 import { Logo } from '../Logo';
 import { SidebarElement } from './components/SidebarElement';
 import { LinkList, Sidebar as SidebarWrapper, SidebarInside } from './Sidebar.styled';
 
 export const Sidebar:FC = () => {
-  const { isOpen, toggle } = sidebarStore();
+  const { isOpen } = sidebarStore();
 
   return (
     <SidebarWrapper isOpen={isOpen}>
       <Logo />
       <Divider />
       <SidebarInside>
-        <SidebarElement name="/" icon={<ButtonIcon onClick={toggle} src={signature} />}>
-          <Link href="/">Hotelspot</Link>
+        <SidebarElement name="/" icon={<FeatherIcon icon="layout" />}>
+          <Link href="/">Dashboard</Link>
         </SidebarElement>
-        <SidebarElement icon={<ButtonIcon onClick={toggle} src={pod} />}>
+        <SidebarElement name="/admin" icon={<FeatherIcon icon="shield" />}>
+          <Link href="/admin">Admin</Link>
+        </SidebarElement>
+        <SidebarElement icon={<FeatherIcon icon="monitor" />}>
           <Accordion className="px-0">
             <AccordionItem
-              title={<p className="font-14-400">Pod</p>}
+              title={<p className="font-14-400">Pod's</p>}
             >
               <LinkList>
                 <Link href="/pod">Dane hotelowe</Link>
@@ -34,13 +36,10 @@ export const Sidebar:FC = () => {
             </AccordionItem>
           </Accordion>
         </SidebarElement>
-        <SidebarElement name="/admin" icon={<ButtonIcon onClick={toggle} src={admin} />}>
-          <Link href="/admin">Admin</Link>
-        </SidebarElement>
-        <SidebarElement icon={<ButtonIcon onClick={toggle} src={pod} />}>
+        <SidebarElement icon={<FeatherIcon icon="award" />}>
           <Accordion className="px-0">
             <AccordionItem
-              title={<p className="font-14-400">Zarządzanie konferencjami</p>}
+              title={<p className="font-14-400">Event Manager</p>}
             >
               <LinkList>
                 <Link href="/events">Wydarzenia</Link>
@@ -52,7 +51,24 @@ export const Sidebar:FC = () => {
             </AccordionItem>
           </Accordion>
         </SidebarElement>
-
+        <SidebarElement name="/" icon={<FeatherIcon icon="message-circle" />}>
+          <Link href="/">Opinie</Link>
+        </SidebarElement>
+        <SidebarElement name="/" icon={<FeatherIcon icon="dollar-sign" />}>
+          <Link href="/">Prowizje</Link>
+        </SidebarElement>
+        <SidebarElement name="/" icon={<FeatherIcon icon="alert-triangle" />}>
+          <Link href="/">Zgłoszenia</Link>
+        </SidebarElement>
+        <SidebarElement name="/" icon={<FeatherIcon icon="tool" />}>
+          <Link href="/">Usterki</Link>
+        </SidebarElement>
+        <SidebarElement name="/" icon={<FeatherIcon icon="shopping-cart" />}>
+          <Link href="/">Store</Link>
+        </SidebarElement>
+        <SidebarElement name="/" icon={<FeatherIcon icon="settings" />}>
+          <Link href="/">Ustawienia</Link>
+        </SidebarElement>
       </SidebarInside>
     </SidebarWrapper>
   );

@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { SidebarElementWrapper } from './SidebarElement.styled';
+import { SidebarElementWrapper, SidebarIcon } from './SidebarElement.styled';
 
 interface SidebarElementProps {
     children?:ReactNode;
@@ -13,7 +13,9 @@ export const SidebarElement:FC<SidebarElementProps> = ({ children, icon, name = 
 
   return (
     <SidebarElementWrapper isActive={pathname === name}>
-      {icon}{children}
+      <>
+        <SidebarIcon>{icon}</SidebarIcon>{children}
+      </>
     </SidebarElementWrapper>
   );
 };

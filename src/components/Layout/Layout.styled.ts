@@ -11,5 +11,5 @@ export const PageWrapper = styled.div`
   background: #F5F5F5;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2rem; 
 `;

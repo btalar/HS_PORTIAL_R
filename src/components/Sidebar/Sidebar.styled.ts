@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const Sidebar = styled.aside<{ isOpen: boolean }>`
-  display: flex;
-  overflow: hidden;
+  display: flex; 
   flex-direction: column;
   border-radius: 0 15px 15px 0;
   width: ${(props) => (props.isOpen ? '300' : '56px')};
   background: white;
   transition: .3s;
   padding: 0 1rem;
+  width: 300px; 
   @media (max-width: 768px){
     position: fixed;
     width: 256px;
