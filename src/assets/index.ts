@@ -1,9 +1,17 @@
 import adminSVG from './icons/admin.svg';
+import deleteSVG from './icons/delete.svg';
+import editSVG from './icons/edit.svg';
+import eyeSVG from './icons/eye.svg';
 import plusSVG from './icons/plus.svg';
+import plusWhiteSVG from './icons/plusWhite.svg';
 import podSVG from './icons/pod.svg';
 import signatureSVG from './icons/signature.svg';
 import logoPNG from './images/logo.png';
 
+export const edit = editSVG;
+export const eye = eyeSVG;
+export const deleteIcon = deleteSVG;
+export const plusWhite = plusWhiteSVG;
 export const logo = logoPNG;
 export const signature = signatureSVG;
 export const pod = podSVG;
