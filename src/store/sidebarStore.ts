@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
 
 interface SidebarStore {
-    isOpen:boolean;
+    isSidebarOpen:boolean;
     toggle:() => void;
     open:() => void;
     hide:() => void;
@@ -12,15 +12,15 @@ export const sidebarStore = create<SidebarStore>()(
   devtools(
     persist(
       (set) => ({
-        isOpen: false,
+        isSidebarOpen: false,
         hide: () => set(
-          () => ({ isOpen: false }),
+          () => ({ isSidebarOpen: false }),
         ),
         open: () => set(
-          () => ({ isOpen: true }),
+          () => ({ isSidebarOpen: true }),
         ),
         toggle: () => set(
-          (state) => ({ isOpen: !state.isOpen }),
+          (state) => ({ isSidebarOpen: !state.isSidebarOpen }),
         ),
       }),
       { name: 'sidebar' },
