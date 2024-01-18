@@ -15,10 +15,11 @@ export const Sidebar:FC = () => {
       <Logo />
       <Divider />
       <SidebarElement name="/" icon={<FeatherIcon size={24} icon="layout" />}>
-        <MenuLink href="/">Dashboard</MenuLink>
+        <MenuLink to="/">Dashboard</MenuLink>
       </SidebarElement>
       <Accordion
         showDivider={false}
+        disabledKeys={['3']}
       >
         <AccordionItem
           key="1"
@@ -26,12 +27,12 @@ export const Sidebar:FC = () => {
           title={<Item>Pod</Item>}
         >
           <LinkList>
-            <MenuLink href="/pod">Informacje hotelowe</MenuLink>
-            <MenuLink href="/menu">Menu Restauracja</MenuLink>
-            <MenuLink href="/menu">Oferty specjalne</MenuLink>
-            <MenuLink href="/menu">Reklamy</MenuLink>
-            <MenuLink href="/menu">Web View</MenuLink>
-            <MenuLink href="/settings">Ustawienia</MenuLink>
+            <MenuLink to="/pod">Informacje hotelowe</MenuLink>
+            <MenuLink to="/menu">Menu Restauracja</MenuLink>
+            <MenuLink to="/menu">Oferty specjalne</MenuLink>
+            <MenuLink to="/menu">Reklamy</MenuLink>
+            <MenuLink to="/menu">Web View</MenuLink>
+            <MenuLink to="/settings">Ustawienia</MenuLink>
           </LinkList>
         </AccordionItem>
         <AccordionItem
@@ -40,17 +41,22 @@ export const Sidebar:FC = () => {
           title={<Item>Event Manager <Chip color="danger" size="sm">New</Chip></Item>}
         >
           <LinkList>
-            <MenuLink href="/events">Wydarzenia</MenuLink>
-            <MenuLink href="/amenities">Klienci</MenuLink>
-            <MenuLink href="/menu">Sale</MenuLink>
-            <MenuLink href="/settings">Warianty menu</MenuLink>
-            <MenuLink href="/settings">Opiekunowie</MenuLink>
+            <MenuLink to="/events">Wydarzenia</MenuLink>
+            <MenuLink to="/amenities">Klienci</MenuLink>
+            <MenuLink to="/menu">Sale</MenuLink>
+            <MenuLink to="/settings">Warianty menu</MenuLink>
+            <MenuLink to="/settings">Opiekunowie</MenuLink>
           </LinkList>
         </AccordionItem>
-        <AccordionItem key="3" startContent={<FeatherIcon size={24} icon="award" />} title={<Item>Opinie</Item>}>
+        <AccordionItem
+          key="3"
+          startContent={<FeatherIcon size={24} icon="award" />}
+          title={<Item>Opinie</Item>}
+          subtitle="Niedostępnę w twoim planie"
+        >
           <LinkList>
-            <MenuLink href="/events">Ostatnio Dodane</MenuLink>
-            <MenuLink href="/amenities">Statystyki</MenuLink>
+            <MenuLink to="/events">Ostatnio Dodane</MenuLink>
+            <MenuLink to="/amenities">Statystyki</MenuLink>
           </LinkList>
         </AccordionItem>
         <AccordionItem
@@ -59,8 +65,8 @@ export const Sidebar:FC = () => {
           title={<Item>Prowizje</Item>}
         >
           <LinkList>
-            <MenuLink href="/events">Ostatnio Dodane</MenuLink>
-            <MenuLink href="/amenities">Statystyki</MenuLink>
+            <MenuLink to="/events">Ostatnio Dodane</MenuLink>
+            <MenuLink to="/amenities">Statystyki</MenuLink>
           </LinkList>
         </AccordionItem>
         <AccordionItem
@@ -71,8 +77,8 @@ export const Sidebar:FC = () => {
           title={<Item>Zgłoszenia <Chip color="danger" size="sm">New</Chip></Item>}
         >
           <LinkList>
-            <MenuLink href="/events">Ostatnio Dodane</MenuLink>
-            <MenuLink href="/amenities">Statystyki</MenuLink>
+            <MenuLink to="/events">Ostatnio Dodane</MenuLink>
+            <MenuLink to="/amenities">Statystyki</MenuLink>
           </LinkList>
         </AccordionItem>
         <AccordionItem
@@ -84,23 +90,26 @@ export const Sidebar:FC = () => {
           title={<Item>Usterki <Chip color="danger" size="sm">New</Chip></Item>}
         >
           <LinkList>
-            <MenuLink href="/events">Ostatnio Dodane</MenuLink>
-            <MenuLink href="/amenities">Statystyki</MenuLink>
+            <MenuLink to="/events">Ostatnio Dodane</MenuLink>
+            <MenuLink to="/amenities">Statystyki</MenuLink>
           </LinkList>
         </AccordionItem>
         <AccordionItem key="7" startContent={<FeatherIcon size={24} icon="shopping-cart" />} title={<Item>Store</Item>}>
           <LinkList>
-            <MenuLink href="/events">Ostatnio Dodane</MenuLink>
-            <MenuLink href="/amenities">Statystyki</MenuLink>
+            <MenuLink to="/events">Ostatnio Dodane</MenuLink>
+            <MenuLink to="/amenities">Statystyki</MenuLink>
           </LinkList>
         </AccordionItem>
 
       </Accordion>
       <SidebarElement name="/" icon={<FeatherIcon size={24} icon="users" />}>
-        <MenuLink href="/">Użytkownicy</MenuLink>
+        <MenuLink to="/">Użytkownicy</MenuLink>
       </SidebarElement>
       <SidebarElement name="/" icon={<FeatherIcon size={24} icon="settings" />}>
-        <MenuLink href="/">Ustawienia</MenuLink>
+        <MenuLink to="/">Ustawienia</MenuLink>
+      </SidebarElement>
+      <SidebarElement name="/" icon={<FeatherIcon size={24} icon="settings" />}>
+        <MenuLink to="/admin">Admin</MenuLink>
       </SidebarElement>
     </SidebarWrapper>
   );

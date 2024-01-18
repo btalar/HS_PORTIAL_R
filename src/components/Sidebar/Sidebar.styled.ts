@@ -1,4 +1,4 @@
-import { Link } from '@nextui-org/react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Sidebar = styled.aside<{ isOpen: boolean }>`
