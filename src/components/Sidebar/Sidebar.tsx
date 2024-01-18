@@ -15,13 +15,34 @@ export const Sidebar:FC = () => {
     <SidebarWrapper isOpen={isOpen}>
       <Logo />
       <Divider />
+      <SidebarElement name="/" icon={<FeatherIcon icon="layout" />}>
+        <Link href="/">Dashboard</Link>
+      </SidebarElement>
+      <Accordion disabledKeys={['2']}>
+        <AccordionItem key="1" startContent={<FeatherIcon icon="layout" />} title="My Pod's" />
+
+        <AccordionItem
+          key="2"
+          aria-label="Accordion 2"
+          title="Accordion 2"
+          startContent={<FeatherIcon icon="monitor" />}
+        >
+          <LinkList>
+            <Link href="/pod">Dane hotelowe</Link>
+            <Link href="/amenities">Udogodnienia</Link>
+            <Link href="/menu">Menu resturacji</Link>
+            <Link href="/settings">Ustawienia</Link>
+          </LinkList>
+        </AccordionItem>
+
+      </Accordion>
+
+      <SidebarElement name="/admin" icon={<FeatherIcon icon="shield" />}>
+        <Link href="/admin">Admin</Link>
+      </SidebarElement>
+
       <SidebarInside>
-        <SidebarElement name="/" icon={<FeatherIcon icon="layout" />}>
-          <Link href="/">Dashboard</Link>
-        </SidebarElement>
-        <SidebarElement name="/admin" icon={<FeatherIcon icon="shield" />}>
-          <Link href="/admin">Admin</Link>
-        </SidebarElement>
+
         <SidebarElement icon={<FeatherIcon icon="monitor" />}>
           <Accordion className="px-0">
             <AccordionItem
