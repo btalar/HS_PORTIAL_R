@@ -8,7 +8,7 @@ export const Settings:FC = () => {
   useHotel();
 
   return (
-    <Layout title="Ustawienia hotelowe">
+    <Layout title="Ustawienia Pod'a">
       <SettingsForm />
     </Layout>
   );

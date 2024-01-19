@@ -8,8 +8,10 @@ import { useToast } from './useToast';
 export const useHotelUpdate = <T extends FieldValues>():{onSubmit: SubmitHandler<T>} => {
   const { hotel } = useHotelStore();
   const { showError, showSuccess } = useToast();
-
   const onSubmit:SubmitHandler<T> = async (value) => {
+    console.log(hotel?.id);
+    console.log(value);
+
     if (!hotel?.id) {
       return;
     }
@@ -18,6 +20,7 @@ export const useHotelUpdate = <T extends FieldValues>():{onSubmit: SubmitHandler
       await updateDoc(hotelDoc, { ...value });
       showSuccess('Succesffully updated');
     } catch (err) {
+      console.log(err);
       showError(JSON.stringify(err));
     }
   };

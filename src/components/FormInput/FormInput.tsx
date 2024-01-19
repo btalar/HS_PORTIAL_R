@@ -13,13 +13,11 @@ interface FormInput extends InputType{
 
 export const FormInput:FC<FormInput> = ({ type, name, label, register, control, options }) => ({
   string: <Input
-    key={name || label}
     label={label}
     placeholder="_"
     {...register(name || label)}
   />,
   boolean: <Controller
-    key={name || label}
     name={name || label}
     control={control}
     render={({ field: { value, onChange } }) => (
@@ -30,7 +28,7 @@ export const FormInput:FC<FormInput> = ({ type, name, label, register, control, 
       </Switch>
     )}
   />,
-  chip: <Chip key={name || label} color="primary" className="mt-8" size="lg">{label}</Chip>,
+  chip: <Chip color="primary" className="mt-8" size="lg">{label}</Chip>,
   image: <Controller
     control={control}
     render={({ field: { onChange, value } }) => <FormImage label={label} onChange={onChange} value={String(value)} />}
