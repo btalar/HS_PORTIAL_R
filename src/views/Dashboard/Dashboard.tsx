@@ -1,9 +1,5 @@
-import React, { FC } from 'react';
-
-import { Layout } from '../../components';
+import { FC } from 'react';
 
 export const Dashboard: FC = () => (
-  <Layout>
-    Dashboard
-  </Layout>
+  <h1>Dashboard</h1>
 );

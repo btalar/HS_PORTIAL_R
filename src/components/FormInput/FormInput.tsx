@@ -1,4 +1,4 @@
-import { Chip, Input, Select, SelectItem, Switch } from '@nextui-org/react';
+import { Input, Select, SelectItem, Switch } from '@nextui-org/react';
 import React, { FC } from 'react';
 import { Control, Controller, UseFormRegister } from 'react-hook-form';
 
@@ -11,7 +11,10 @@ interface FormInput extends InputType{
     register: UseFormRegister<any>;
 }
 
-export const FormInput:FC<FormInput> = ({ type, name, label, register, control, options }) => ({
+export const FormInput:FC<FormInput> = ({
+  type, name, label,
+  register, control, options,
+}) => ({
   string: <Input
     label={label}
     placeholder="_"
@@ -28,7 +31,6 @@ export const FormInput:FC<FormInput> = ({ type, name, label, register, control, 
       </Switch>
     )}
   />,
-  chip: <Chip color="primary" className="mt-8" size="lg">{label}</Chip>,
   image: <Controller
     control={control}
     render={({ field: { onChange, value } }) => <FormImage label={label} onChange={onChange} value={String(value)} />}
