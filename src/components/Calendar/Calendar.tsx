@@ -1,28 +1,62 @@
-import 'react-big-calendar/lib/css/react-big-calendar.css';
+import './sass/index.scss';
 
 import moment from 'moment';
-import { FC } from 'react';
-import { Calendar as BigCalendar, momentLocalizer } from 'react-big-calendar';
+import { FC, useEffect, useMemo, useRef } from 'react';
+import {
+  Calendar as BigCalendar, EventProps,
+  momentLocalizer,
+} from 'react-big-calendar';
+
+import { useCalendarStore } from '../../store/useCalendarStore';
+import { DateCellWrapper } from './component/DateCellWrapper';
+import { Toolbar } from './component/Toolbar';
 
 const localizer = momentLocalizer(moment);
 
-const CustomDateHeader = () => (
-  <div className="custom-date-header">
-    <div className="dh-item header-left">
-      <span className="myIcon"> oglądanie filmu z kacprem</span>
-    </div>
-    <div className="dh-item header-right" />
-  </div>
-);
+// eslint-disable-next-line react/jsx-no-useless-fragment
+export const Event:FC<EventProps> = () => <></>;
 
-export const Calendar:FC = () => (
-  <div>
-    <BigCalendar
-      components={{ month: { dateHeader: CustomDateHeader } }}
-      localizer={localizer}
-      startAccessor="start"
-      endAccessor="end"
-      style={{ height: 500 }}
-    />
-  </div>
-);
+export const Calendar:FC = () => {
+  const calendar = useRef<BigCalendar>(null);
+
+  const { events, activeView } = useCalendarStore();
+
+  useEffect(() => {
+    console.log(calendar);
+    if (calendar.current) {
+      // @ts-ignore
+      console.log(calendar.current.getViews());
+      // @ts-ignore
+      console.log(calendar.current.handleViewChange('agenda'));
+    }
+  }, [calendar]);
+
+  // eslint-disable-next-line no-empty-pattern
+  const { toolbar, dateCellWrapper, event } = useMemo(
+    () => ({
+      toolbar: Toolbar,
+      dateCellWrapper: DateCellWrapper,
+      event: Event,
+    }),
+    [],
+  );
+
+  return (
+    <div>
+      <BigCalendar
+        view={activeView}
+        events={events}
+        ref={calendar}
+        components={{
+          toolbar,
+          dateCellWrapper,
+          month: { event },
+        }}
+        localizer={localizer}
+        startAccessor="start"
+        endAccessor="end"
+        style={{ height: 'calc(100vh)' }}
+      />
+    </div>
+  );
+};
