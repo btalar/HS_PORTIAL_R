@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
-import { EventType } from '../../../../store';
+import { EventType, EventVariant } from '../../../../types/calendar';
 
 export const Card = styled.div<{ type?:EventType }>`
   background-color: ${(props) => {
     switch (props.type) {
-      case 'bootcamp':
+      case EventVariant.BOOTCAMP:
         return '#D1F4E0';
-      case 'reseration':
+      case EventVariant.RESERVATION:
         return '#FDEDD3';
-      case 'conference':
+      case EventVariant.CONFERENCE:
         return '#F5F5F5';
       default:
         return 'white';
@@ -17,7 +17,7 @@ export const Card = styled.div<{ type?:EventType }>`
   }};
   display: flex;
   flex-direction: column;
-  justify-content: ${(props) => (props.type ? 'space-between' : 'flex-start')});
+  justify-content: space-between;
   padding: 1rem;
   width: 100%;
   height: 100%;
@@ -31,11 +31,11 @@ export const Text = styled.div<{ type?:EventType;left?:boolean }>`
   text-align: ${(props) => (props.left ? 'left' : 'right')};
   color:  ${(props) => {
     switch (props.type) {
-      case 'bootcamp':
+      case EventVariant.BOOTCAMP:
         return '#12A150';
-      case 'reseration':
+      case EventVariant.RESERVATION:
         return '#CA9133';
-      case 'conference':
+      case EventVariant.CONFERENCE:
         return '#191919';
       default:
         return '#191919';
@@ -49,11 +49,11 @@ export const Badge = styled.div<{ type?:EventType }>`
   border-radius: 12px;
   background-color:  ${(props) => {
     switch (props.type) {
-      case 'bootcamp':
+      case EventVariant.BOOTCAMP:
         return '#12A150';
-      case 'reseration':
+      case EventVariant.RESERVATION:
         return '#CA9133';
-      case 'conference':
+      case EventVariant.CONFERENCE:
         return '#A2A2A8';
       default:
         return 'white';

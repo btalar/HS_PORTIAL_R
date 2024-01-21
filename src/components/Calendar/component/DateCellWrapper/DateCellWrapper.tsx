@@ -4,6 +4,7 @@ import { DateCellWrapperProps } from 'react-big-calendar';
 
 import { getCurrentEvent } from '../../../../helpers/getCurrentEvent.helper';
 import { useCalendarStore } from '../../../../store';
+import { EventVariant } from '../../../../types/calendar';
 import { Badge, Card, Text, Wrapper } from './DateCellWrapper.styled';
 
 export const DateCellWrapper:FC<DateCellWrapperProps> = ({ value }) => {
@@ -17,12 +18,15 @@ export const DateCellWrapper:FC<DateCellWrapperProps> = ({ value }) => {
 
   return (
     <Card type={type}>
-
       <Text type={event?.resource?.type} className="font-16-400">{number}</Text>
       <Wrapper>
         {type && (
         <Badge className="font-12-700" type={type}>
-          {{ bootcamp: 'Szkolenie', reseration: 'Rezerwacja', conference: 'Konferencja' }[type]}
+          {{
+            [EventVariant.BOOTCAMP]: 'Szkolenie',
+            [EventVariant.RESERVATION]: 'Rezerwacja',
+            [EventVariant.CONFERENCE]: 'Konferencja',
+          }[type]}
         </Badge>
         )}
         <Text left type={type}>{event?.title}</Text>

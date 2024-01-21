@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-import { MyEventProps } from '../store/useCalendarStore';
+import { MyEventProps } from '../types/calendar';
 
 export const getCurrentEvent = (events:MyEventProps[], value:Date):MyEventProps | undefined => events.find(
   ({ start }) => moment(start)
