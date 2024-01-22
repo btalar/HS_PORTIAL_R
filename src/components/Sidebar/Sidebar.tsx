@@ -2,7 +2,7 @@ import { Accordion, AccordionItem, Chip, Divider } from '@nextui-org/react';
 import FeatherIcon from 'feather-icons-react';
 import { FC } from 'react';
 
-import { sidebarStore } from '../../store/sidebarStore';
+import { sidebarStore } from '../../store';
 import { Logo } from '../Logo';
 import { SidebarElement } from './components/SidebarElement';
 import { Item, LinkList, MenuLink, Sidebar as SidebarWrapper } from './Sidebar.styled';

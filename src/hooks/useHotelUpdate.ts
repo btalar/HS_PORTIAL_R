@@ -8,7 +8,6 @@ import { useToast } from './useToast';
 export const useHotelUpdate = <T extends FieldValues>():{onSubmit: SubmitHandler<T>} => {
   const { hotel } = useHotelStore();
   const { showError, showSuccess } = useToast();
-
   const onSubmit:SubmitHandler<T> = async (value) => {
     if (!hotel?.id) {
       return;

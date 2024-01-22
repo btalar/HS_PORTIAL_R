@@ -1,11 +1,11 @@
 import { Spinner } from '@nextui-org/react';
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 import { auth } from '../../config';
 import { LoaderWrapper } from './ProtectedRoute.styled';
 
-export const ProtectedRoute: React.FC = () => {
+export const ProtectedRoute: FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {

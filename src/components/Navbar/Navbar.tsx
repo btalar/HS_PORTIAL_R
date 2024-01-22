@@ -15,6 +15,7 @@ interface NavbarProps{
 
 export const Navbar:FC<NavbarProps> = ({ title = 'Hotelspot' }) => {
   const { toggle } = sidebarStore();
+
   return (
     <NavbarNextUi maxWidth="full" position="sticky">
       <NavbarMenuToggle onChange={toggle} />

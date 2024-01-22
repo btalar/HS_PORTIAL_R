@@ -1,19 +1,20 @@
 import { Hotel, HotelKeys, ItemCard, Language } from '../../types/hotel';
 
 export interface InputType {
-      name?:HotelKeys |
-      keyof ItemCard|'settings.language';
+      name?:HotelKeys | keyof ItemCard | 'settings.language';
       label:string ;
-      type:'string'|'boolean'|'chip'|'image'|'select';
+      type:'string'|'boolean'|'image'|'select';
       options?:string[];
 }
-export const formInputs:InputType[] = [
-  { type: 'chip', label: 'Dane administracyjne' },
+
+export const formInputHotel: InputType[] = [
   { name: HotelKeys.Name, label: 'Nazwa hotelu', type: 'string' },
   { name: HotelKeys.City, label: 'Miasto', type: 'string' },
   { name: HotelKeys.Street, label: 'Ulica', type: 'string' },
   { name: HotelKeys.BuildNumber, label: 'Numer budynku', type: 'string' },
-  { type: 'chip', label: 'Widoczne przyciskna na Navbarze' },
+];
+
+export const formInputNavbar: InputType[] = [
   { name: HotelKeys.NavbarHotelEvents, label: 'Wydarzenia hotelowe [Navbar Button]', type: 'boolean' },
   { name: HotelKeys.NavbarConnectToWifi, label: 'Połącz z WiFi [Navbar Button]', type: 'boolean' },
   { name: HotelKeys.NavbarContactInfo, label: 'Informacje kontaktowe [Navbar Button]', type: 'boolean' },
@@ -21,7 +22,9 @@ export const formInputs:InputType[] = [
   { name: HotelKeys.NavbarNear, label: 'W pobliżu [Navbar Button]', type: 'boolean' },
   { name: HotelKeys.NavbarSpecialOffers, label: 'Specjalne oferty [Navbar Button]', type: 'boolean' },
   { name: HotelKeys.NavbarTaxiOrder, label: 'Zamów taksówkę [Navbar Button]', type: 'boolean' },
-  { type: 'chip', label: 'Karty widoczne w widoczności hotelu' },
+];
+
+export const formInputCard: InputType[] = [
   { name: HotelKeys.CardRestaurant, label: 'Karta Restauracji', type: 'boolean' },
   { name: HotelKeys.CardWiFi, label: 'Karta WiFi', type: 'boolean' },
   { name: HotelKeys.CardTown, label: 'Karta Miasta', type: 'boolean' },

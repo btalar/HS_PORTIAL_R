@@ -1,3 +1,4 @@
+import { Chip } from '@nextui-org/react';
 import React, { FC, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -7,7 +8,7 @@ import { Hotel } from '../../types/hotel';
 import { FormInput } from '../FormInput';
 import { FormSubmit } from '../FormSubmit';
 import { HotelFormWrapper } from './HotelForm.styled';
-import { defaultValues, formInputs } from './inputs';
+import { defaultValues, formInputCard, formInputHotel, formInputNavbar } from './inputs';
 
 export const HotelForm:FC = () => {
   const { hotel } = useHotelStore();
@@ -35,10 +36,30 @@ export const HotelForm:FC = () => {
 
   return (
     <HotelFormWrapper onSubmit={handleSubmit(onSubmit)}>
-      {formInputs.map((props) => (
+      <Chip color="primary" className="mt-8" size="lg">Ustawienia hotelowe</Chip>
+      {formInputHotel.map((props) => (
         <FormInput
           {...props}
-          {...{ control, register }}
+          control={control}
+          register={register}
+          key={JSON.stringify(props)}
+        />
+      ))}
+      <Chip color="primary" className="mt-8" size="lg">Ustawienia Navbaru</Chip>
+      {formInputNavbar.map((props) => (
+        <FormInput
+          {...props}
+          control={control}
+          register={register}
+          key={JSON.stringify(props)}
+        />
+      ))}
+      <Chip color="primary" className="mt-8" size="lg">Ustawienia Kart</Chip>
+      {formInputCard.map((props) => (
+        <FormInput
+          {...props}
+          control={control}
+          register={register}
           key={JSON.stringify(props)}
         />
       ))}

@@ -46,7 +46,6 @@ export const SettingsForm:FC = () => {
           {...props}
         />
       ))}
-
       <FormSubmit isDirty={isDirty} resetForm={resetForm} />
     </SettingsFormWrapper>
   );

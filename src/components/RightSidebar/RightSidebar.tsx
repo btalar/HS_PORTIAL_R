@@ -24,8 +24,6 @@ export const commonInputs: InputType[] = [
   { name: 'image4', type: 'image', label: 'image4' },
 ];
 
-console.log(commonInputs);
-
 const trip: InputType[] = [
   { name: 'location', type: 'string', label: 'Location' },
   { name: 'price', type: 'string', label: 'Price' },
@@ -82,7 +80,7 @@ export const RightSidebar:FC = () => {
   return (
     <Sidebar isOpen={Boolean(id)}>
       <FormWrapper onSubmit={handleSubmit((data) => {
-        if (cardDetails?.cardIndex && cardDetails?.cardItemsIndex) {
+        if (cardDetails !== null) {
           const newArray = [...hotel![HotelKeys.Cards]];
           newArray[cardDetails.cardIndex].items[cardDetails.cardItemsIndex] = { ...data };
           onSubmit({ cards: newArray });
