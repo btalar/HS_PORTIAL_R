@@ -1,8 +1,7 @@
 import { Hotel, HotelKeys, ItemCard, Language } from '../../types/hotel';
 
 export interface InputType {
-      name?:HotelKeys |
-      keyof ItemCard|'settings.language';
+      name?:HotelKeys | keyof ItemCard | 'settings.language';
       label:string ;
       type:'string'|'boolean'|'image'|'select';
       options?:string[];

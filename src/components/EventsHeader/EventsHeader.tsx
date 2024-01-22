@@ -1,5 +1,6 @@
 import { Button, Image, Radio, RadioGroup } from '@nextui-org/react';
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { plusWhite } from '../../assets';
 import { useEventStore } from '../../store/useEventStore';
@@ -9,6 +10,7 @@ const PlusWhite:FC = () => <Image src={plusWhite} />;
 
 export const EventsHeader:FC = () => {
   const { active, setActive } = useEventStore();
+  const navigate = useNavigate();
 
   return (
     <EventsHeaderWrapper>
@@ -26,6 +28,7 @@ export const EventsHeader:FC = () => {
       </EventsAction>
       <EventsAction>
         <Button
+          onClick={() => navigate('/events/new')}
           size="lg"
           startContent={
             <PlusWhite />
