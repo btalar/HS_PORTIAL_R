@@ -45,7 +45,7 @@ export const NestedFieldArray:FC<NestedFieldArrayProps> = ({
       {fields.map(({ id }, index) => (
         <CardPreview key={id} {...{ nestIndex, index, control, register, remove }} />
       ))}
-      <Card className="min-h-[300px]">
+      <Card isActive className="min-h-[300px]">
         <Button
           isIconOnly
           type="button"
