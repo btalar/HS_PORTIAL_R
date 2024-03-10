@@ -3,6 +3,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 import { auth } from '../../config';
+import { Layout } from '../Layout';
 import { LoaderWrapper } from './ProtectedRoute.styled';
 
 export const ProtectedRoute: FC = () => {
@@ -19,5 +20,5 @@ export const ProtectedRoute: FC = () => {
     return () => unsubscribe();
   }, [navigate]);
 
-  return loading ? <LoaderWrapper><Spinner size="lg" /></LoaderWrapper> : <Outlet />;
+  return loading ? <LoaderWrapper><Spinner size="lg" /></LoaderWrapper> : <Layout><Outlet /></Layout>;
 };
