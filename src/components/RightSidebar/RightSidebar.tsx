@@ -78,7 +78,7 @@ export const RightSidebar:FC = () => {
   const { onSubmit } = useHotelUpdate<AdminForm>();
 
   return (
-    <Sidebar isOpen={Boolean(id)}>
+    <Sidebar>
       <FormWrapper onSubmit={handleSubmit((data) => {
         if (cardDetails !== null) {
           const newArray = [...hotel![HotelKeys.Cards]];

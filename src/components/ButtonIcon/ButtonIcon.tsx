@@ -4,13 +4,15 @@ import { FC, MouseEventHandler } from 'react';
 import { ButtonIcon as Button } from './ButtonIcon.styled';
 
 interface ButtonIconProps {
+    text?: string;
     onClick?:MouseEventHandler<HTMLButtonElement>;
     src?:string;
     noMargin?:boolean;
 }
 
-export const ButtonIcon:FC<ButtonIconProps> = ({ onClick, noMargin, src }) => (
+export const ButtonIcon:FC<ButtonIconProps> = ({ onClick, noMargin, src, text }) => (
   <Button noMargin={noMargin} isIconOnly onClick={onClick}>
+    {text}
     <Image radius="none" width={20} height={20} src={src} />
   </Button>
 );

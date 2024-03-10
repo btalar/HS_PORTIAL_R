@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
-export const SidebarElementWrapper = styled.div<{isActive:boolean}>`
+export const SidebarElementWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  border-radius: .5rem; 
-  padding: 8px 8px; 
+  justify-content: flex-start; 
+  padding: 10px 8px;
 `;
 
 export const SidebarIcon = styled.div` 

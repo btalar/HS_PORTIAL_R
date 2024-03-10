@@ -40,6 +40,7 @@ export const ModalComponent: FC<ModalComponentProps> = ({ title, showModal, onYe
           },
         },
       },
+
     }}
   >
     <ModalContent>

@@ -1,12 +1,11 @@
 import { DevTool } from '@hookform/devtools';
 import { Button, Input } from '@nextui-org/react';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import React, { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { actionSignIn } from '../../action';
-import { useToast } from '../../hooks/useToast';
-import { userStore } from '../../store';
+import { useUserStore } from '../../store';
 
 interface LoginFormProps {
   email: string;
@@ -15,25 +14,38 @@ interface LoginFormProps {
 
 export const LoginForm: FC = () => {
   const { register, control, handleSubmit } = useForm<LoginFormProps>();
-  const { setUser } = userStore();
+  const { setUser, setRole } = useUserStore();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { showError } = useToast();
+
   const navigate = useNavigate();
   const location = useLocation();
-
+  const auth = getAuth();
   // @ts-ignore
   const from = location?.state?.from?.pathname || '/';
 
   const onSubmit = async ({ email, password }: LoginFormProps):Promise<void> => {
     setIsLoading(true);
-    try {
-      const user = await actionSignIn(email, password);
-      setIsLoading(false);
-      navigate(from, { replace: true });
-      setUser(user.user);
-    } catch (error) {
-      showError(String(error));
-    }
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const { user } = userCredential;
+        setUser(
+          { email: user.email, userName: user.displayName },
+        );
+        navigate(from, { replace: true });
+
+        user.getIdTokenResult().then((idTokenResult) => {
+          const { isAdmin } = idTokenResult.claims;
+          if (isAdmin) {
+            setRole('ADMIN');
+          } else {
+            setRole('CLIENT');
+          }
+        });
+        setUser({ email: user.email });
+      })
+      .catch((error) => {
+        console.error('Error signing in:', error.message);
+      });
     setIsLoading(false);
   };
 

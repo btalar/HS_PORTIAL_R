@@ -8,7 +8,7 @@ import { FC, Key, useCallback } from 'react';
 import { deleteIcon, edit, eye } from '../../assets';
 import { columns, EventProps, events } from '../../MOCKS/events';
 import { ButtonIcon } from '../ButtonIcon';
-import { Cell } from '../Cell';
+import { Cell } from './partials/Cell';
 
 export const Table:FC = () => {
   const renderCell = useCallback((event:EventProps, columnKey:Key) => {

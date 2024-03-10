@@ -8,11 +8,10 @@ export const FormWrapper = styled.form`
   padding: 8px;
 `;
 
-export const Sidebar = styled.aside<{ isOpen: boolean }>`
+export const Sidebar = styled.aside`
   display: flex;
   overflow: hidden;
-  flex-direction: column;
-  width: ${(props) => (props.isOpen ? '512px' : '0')};
+  flex-direction: column; 
   background: #efefef;
   transition: .3s;
   @media (max-width: 768px) {
@@ -20,8 +19,7 @@ export const Sidebar = styled.aside<{ isOpen: boolean }>`
     width: 256px;
     top: 56px;
     bottom: 0;
-    z-index: 999;
-    transform: translateX(${(props) => (props.isOpen ? '-100%' : '0')});
+    z-index: 999; 
   }
 `;
 

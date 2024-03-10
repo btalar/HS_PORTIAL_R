@@ -8,8 +8,8 @@ import {
 } from 'react-big-calendar';
 
 import { useCalendarStore } from '../../store/useCalendarStore';
-import { DateCellWrapper } from './component/DateCellWrapper';
-import { Toolbar } from './component/Toolbar';
+import { DateCellWrapper } from './partials/DateCellWrapper';
+import { Toolbar } from './partials/Toolbar';
 
 const localizer = momentLocalizer(moment);
 

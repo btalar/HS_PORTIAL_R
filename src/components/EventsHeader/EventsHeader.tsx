@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { plusWhite } from '../../assets';
 import { useEventStore } from '../../store/useEventStore';
+import { PageTitle } from '../PageTitle';
 import { EventsAction, EventsHeader as EventsHeaderWrapper } from './EventsHeader.styled';
 
 const PlusWhite:FC = () => <Image src={plusWhite} />;
@@ -15,7 +16,7 @@ export const EventsHeader:FC = () => {
   return (
     <EventsHeaderWrapper>
       <EventsAction>
-        <div className="font-18-500">Wydarzenia (12)</div>
+        <PageTitle title="Wydażenia" />
         <RadioGroup
           value={active}
           onValueChange={(value) => setActive(value as 'calendar' | 'table')}

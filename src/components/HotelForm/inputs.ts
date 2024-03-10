@@ -15,13 +15,13 @@ export const formInputHotel: InputType[] = [
 ];
 
 export const formInputNavbar: InputType[] = [
-  { name: HotelKeys.NavbarHotelEvents, label: 'Wydarzenia hotelowe [Navbar Button]', type: 'boolean' },
-  { name: HotelKeys.NavbarConnectToWifi, label: 'Połącz z WiFi [Navbar Button]', type: 'boolean' },
-  { name: HotelKeys.NavbarContactInfo, label: 'Informacje kontaktowe [Navbar Button]', type: 'boolean' },
-  { name: HotelKeys.NavbarMobileApp, label: 'Aplikacja mobilna [Navbar Button]', type: 'boolean' },
-  { name: HotelKeys.NavbarNear, label: 'W pobliżu [Navbar Button]', type: 'boolean' },
-  { name: HotelKeys.NavbarSpecialOffers, label: 'Specjalne oferty [Navbar Button]', type: 'boolean' },
-  { name: HotelKeys.NavbarTaxiOrder, label: 'Zamów taksówkę [Navbar Button]', type: 'boolean' },
+  { name: HotelKeys.NavbarHotelEvents, label: 'Wydarzenia hotelowe [TopBar Button]', type: 'boolean' },
+  { name: HotelKeys.NavbarConnectToWifi, label: 'Połącz z WiFi [TopBar Button]', type: 'boolean' },
+  { name: HotelKeys.NavbarContactInfo, label: 'Informacje kontaktowe [TopBar Button]', type: 'boolean' },
+  { name: HotelKeys.NavbarMobileApp, label: 'Aplikacja mobilna [TopBar Button]', type: 'boolean' },
+  { name: HotelKeys.NavbarNear, label: 'W pobliżu [TopBar Button]', type: 'boolean' },
+  { name: HotelKeys.NavbarSpecialOffers, label: 'Specjalne oferty [TopBar Button]', type: 'boolean' },
+  { name: HotelKeys.NavbarTaxiOrder, label: 'Zamów taksówkę [TopBar Button]', type: 'boolean' },
 ];
 
 export const formInputCard: InputType[] = [

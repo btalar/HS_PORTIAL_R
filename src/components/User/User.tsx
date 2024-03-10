@@ -5,12 +5,12 @@ import { useNavigate } from 'react-router-dom';
 
 import { actionSignOut } from '../../action/action.signOut';
 import { auth } from '../../config';
-import { userStore } from '../../store';
+import { useUserStore } from '../../store';
 
 export const User: FC = () => {
   const navigate = useNavigate();
 
-  const { email } = userStore((state) => state.user);
+  const { userName, email } = useUserStore((state) => state.user);
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
@@ -36,7 +36,8 @@ export const User: FC = () => {
     <Dropdown>
       <DropdownTrigger>
         <UserComponent
-          name={email}
+          name={userName || 'John Doe'}
+          description={email}
           avatarProps={{ src: 'https://avatars.githubusercontent.com/u/30373425?v=4' }}
         />
       </DropdownTrigger>

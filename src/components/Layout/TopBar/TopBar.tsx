@@ -5,20 +5,20 @@ import {
 } from '@nextui-org/react';
 import React, { FC } from 'react';
 
-import { sidebarStore } from '../../store';
-import { User } from '../User';
-import { NavbarMenuToggle, NavbarNextUi } from './Navbar.styled';
+import { sidebarStore } from '../../../store';
+import { User } from '../../User';
+import { TopBarMenuToggle, TopBarNextUi } from './TopBar.styled';
 
 interface NavbarProps{
     title?:string;
 }
 
-export const Navbar:FC<NavbarProps> = ({ title = 'Hotelspot' }) => {
+export const TopBar:FC<NavbarProps> = ({ title = 'Hotelspot' }) => {
   const { toggle } = sidebarStore();
 
   return (
-    <NavbarNextUi maxWidth="full" position="sticky">
-      <NavbarMenuToggle onChange={toggle} />
+    <TopBarNextUi maxWidth="full" position="sticky">
+      <TopBarMenuToggle onChange={toggle} />
       <NavbarBrand>
         <p className="font-24-300">{title}</p>
       </NavbarBrand>
@@ -27,6 +27,6 @@ export const Navbar:FC<NavbarProps> = ({ title = 'Hotelspot' }) => {
           <User />
         </NavbarItem>
       </NavbarContent>
-    </NavbarNextUi>
+    </TopBarNextUi>
   );
 };
